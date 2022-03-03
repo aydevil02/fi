@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Notamember"
+    android:padding="10dp"
+    android:background="@color/black"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/nameForRegisteration"
+        android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:background="@drawable/custom_button_2"
+        android:hint="  Full Name"
+        android:inputType="text"
+        android:textSize="14sp"
+        android:textColorHint="@color/orange"
+        android:autofillHints="" />
+    <RadioGroup
+        android:id="@+id/genderForRegisteration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <RadioButton
+            android:id="@+id/male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="male"
+            android:textColor="@color/orange"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="female"
+            android:textColor="@color/orange"
+            />
+        <RadioButton
+            android:id="@+id/other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other"
+            android:textColor="@color/orange"
+            />
+    </RadioGroup>
+    <EditText
+        android:id="@+id/mobileno.ForRegisteration"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:textColor="@color/white"
+        android:hint="  Mobile Number"
+        android:maxLength="10"
+        android:inputType="number"
+        android:textSize="14sp"
+        android:background="@drawable/custom_button_2"
+        android:textColorHint="@color/orange"
+        android:autofillHints="" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:background="@drawable/custom_button_2"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Qualification :-"
+            android:textColor="@color/orange"/>
+
+        <Spinner
+            android:id="@+id/qualificationspinnerForRegisteration"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:entries="@array/qualification"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:background="@drawable/custom_button_2"
+            android:foregroundTint="@color/black"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:background="@drawable/custom_button_2"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bank :-"
+            android:textColor="@color/orange"/>
+        <Spinner
+            android:id="@+id/bankspinnerForRegisteration"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="55dp"
+            android:entries="@array/Bank"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:background="@drawable/custom_button_2"
+            />
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/registeration_button"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center"
+        android:text="request for  invite"
+        android:textColor="@color/black"
+        android:background="@drawable/custombutton"
+        />
+</LinearLayout>

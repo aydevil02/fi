@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">YOMOH</string>
+    <string-array name="Bank">
+        <item>Citi</item>
+        <item>HDFC</item>
+        <item>SCB</item>
+        <item>SBI</item>
+        <item>AXIS</item>
+        <item>KOTAK MAHINDRA</item>
+        <item>ICICI BANK</item>
+    </string-array>
+    <string-array name="qualification">
+        <item>Engineer</item>
+        <item>Doctor</item>
+        <item>CA/CS/ICWA/CFA</item>
+        <item>MBA</item>
+        <item>Graduate</item>
+        <item>Lawyer</item>
+        <item>Other</item>
+
+    </string-array>
+    <string name="mainScreenMessage"><b>Welcome to YOMOH !</b></string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+
+</resources>

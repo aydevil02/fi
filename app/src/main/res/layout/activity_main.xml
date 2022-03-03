@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <VideoView
+        android:id="@+id/video"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="0dp"
+        android:backgroundTint="@color/black"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/orange"
+        android:text="@string/mainScreenMessage"
+        android:layout_marginTop="70dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill"
+        android:textColor="@color/orange"
+        android:text="  We are adding people gradually to make sure we are able to provide you seamless experince in the app "
+    />
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="fill"
+    android:textColor="@color/orange"
+    android:text="Anyone can join with an invite form an existing user or you can request for an invite and we will text you after reviewing your request"
+    />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="fill"
+        android:textColor="@color/orange"
+        android:text="We are so grateful you\'re here and can\'t wait to have you join YOMOH"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAlignment="viewEnd"
+        android:layout_marginEnd="30dp"
+        android:textColor="@color/orange"
+        android:text="~YOMOH TEAM"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="45dp">
+
+        <TextView
+            android:layout_width="48dp"
+            android:layout_height="40dp"
+            android:textSize="20sp"
+            android:textColor="@color/orange"
+            android:textAlignment="center"
+
+            android:text="+91"
+            />
+        <EditText
+            android:id="@+id/usermobile_no_"
+            android:layout_width="250dp"
+            android:textSize="14sp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:maxLength="10"
+            android:inputType="number"
+            android:backgroundTint="@color/orange"
+            android:hint="Mobile number"
+
+            android:textColorHint="@color/orange"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custombutton"
+        android:text="Validate Your Invite"
+        android:textColor="@color/black" />
+    <Button
+        android:id="@+id/Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already a member / login"
+        android:background="@drawable/custombutton3"
+        android:textColor="@color/Dullorange"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>

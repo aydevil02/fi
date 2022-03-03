@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".User_invite">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Invite your friends to try out YOMOH"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/custom_button_2"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/orange"
+        />
+
+    <EditText
+        android:id="@+id/inviteName"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/custom_button_2"
+        android:drawablePadding="20dp"
+        android:hint="Name"
+        android:includeFontPadding="true"
+        android:textColorHint="@color/orange" />
+
+    <EditText
+        android:id="@+id/invitePhone"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/custom_button_2"
+        android:drawablePadding="20dp"
+        android:hint="Phone Number"
+        android:includeFontPadding="true"
+        android:textColorHint="@color/orange" />
+
+    <EditText
+        android:id="@+id/inviteEmail"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/custom_button_2"
+        android:drawablePadding="20dp"
+        android:hint="Email Address"
+        android:includeFontPadding="true"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/orange" />
+
+    <Button
+        android:id="@+id/inviteBtn"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/custombutton"
+        android:text="Invite"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+
+</LinearLayout>
