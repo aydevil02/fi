@@ -10,24 +10,47 @@
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable-v24/custom_button_7.xml" value="0.1765" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.163" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/Home.xml" value="0.1435" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/addfriend.xml" value="0.128" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/calendar_icon.xml" value="0.128" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/custom_button_2.xml" value="0.145" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/custombutton.xml" value="0.145" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/custombutton3.xml" value="0.153" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/graph.xml" value="0.128" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/home_icon.xml" value="0.128" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/ic_baseline_perm_contact_calendar_24.xml" value="0.1435" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.128" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/imageview.xml" value="0.1435" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/logout.xml" value="0.128" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/menuicon.xml" value="0.1595" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/piechart.xml" value="0.128" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/radiouncheck.xml" value="0.153" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/rate.xml" value="0.128" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/share.xml" value="0.128" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/table.xml" value="0.128" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable/table1.xml" value="0.128" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_mail.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_maindashboard.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_member_registeration.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_member_registeration_sucessful.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_menu.xml" value="0.264" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_message.xml" value="0.264" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_ml_model.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_ml_output.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_notamember.xml" value="0.264" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_otpverification.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_otpverified.xml" value="0.264" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_premission.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_register.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_statementscreen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_table.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_test.xml" value="0.264" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_upload_doc.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_upload_pdf.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_user_invite.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/menuActivity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/menuactivity.xml" value="0.25" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/nav_header.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/spinner_drop_down.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/spinnercolor.xml" value="0.25416666666666665" />

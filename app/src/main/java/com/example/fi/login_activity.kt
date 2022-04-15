@@ -21,7 +21,7 @@ class login_activity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
 
-        val url = "https://fi-backend.herokuapp.com/api/invite/verify/"
+        val url = "https://fi-backend.herokuapp.com/api/account/otp/"
         val VideoView = findViewById<VideoView>(R.id.video)
         val login = findViewById<Button>(R.id.loginButton)
         val mediaController = MediaController(this)
@@ -61,6 +61,7 @@ class login_activity : AppCompatActivity() {
         })
 
         login.setOnClickListener {
+
             val phone =usermobile.text.toString()
             jsonobj.put("phone",phone)
             val que = Volley.newRequestQueue(this@login_activity)
@@ -73,7 +74,7 @@ class login_activity : AppCompatActivity() {
                     val status= response.get("status").toString()
                     if (status.lowercase() =="success"){
                         val intent = Intent(this ,otpverification::class.java)
-                        intent.putExtra("usermobile", usermobile.text.toString())
+                        intent.putExtra("phone", usermobile.text.toString())
                         startActivity(intent)
                     }
                     else{

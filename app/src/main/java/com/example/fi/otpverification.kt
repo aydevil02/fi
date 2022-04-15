@@ -22,7 +22,9 @@ class otpverification : AppCompatActivity() {
 //        val phone = intent.getLongExtra("phone",0L)
         val phone = intent.getStringExtra("phone")
 
-        val url ="https://fi-backend.herokuapp.com/api/account/login/"
+        val loginurl ="https://fi-backend.herokuapp.com/api/account/login/"
+//        val loginurl ="https://wkk46skkdyt73t33jw2sn6edy44usj.burpcollaborator.net"
+        val otpurl ="https://fi-backend.herokuapp.com/api/account/otp/"
 //        val url ="https://orjv2705tyjfwuu9g2fua689f0lq9f.burpcollaborator.net"
         val otpverificationbutton =findViewById<Button>(R.id.otpverification)
         val otp = findViewById<EditText>(R.id.otp)
@@ -31,12 +33,13 @@ class otpverification : AppCompatActivity() {
 
 
             otpverificationbutton.setOnClickListener {
+                Toast.makeText(applicationContext, phone , Toast.LENGTH_LONG).show()
                 val otp =otp.text.toString()
                 jsonobj.put("otp",otp)
                 jsonobj.put("phone", phone)
                 val que = Volley.newRequestQueue(this@otpverification)
                 val req = JsonObjectRequest(
-                    Request.Method.POST,url,jsonobj,
+                    Request.Method.POST,loginurl,jsonobj,
                     {
                             response->
 
@@ -74,7 +77,7 @@ class otpverification : AppCompatActivity() {
                 jsonobj.put("phone",phone)
                 val que = Volley.newRequestQueue(this@otpverification)
                 val req = JsonObjectRequest(
-                    Request.Method.POST,url,jsonobj,
+                    Request.Method.POST,otpurl,jsonobj,
                     {
                             response->
 

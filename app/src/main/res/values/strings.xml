@@ -21,8 +21,5 @@
     </string-array>
     <string name="mainScreenMessage"><b>Welcome to YOMOH !</b></string>
 
-    <string name="open">Open</string>
-    <string name="close">Close</string>
-
 
 </resources>

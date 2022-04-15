@@ -22,7 +22,7 @@ class RegisterActivity : AppCompatActivity()  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val url = "https://fi-backend.herokuapp.com/api/account/register/"
+        val url = Constant.Registerurl
         val fullname = findViewById<EditText>(R.id.name)
         val gender =findViewById<RadioGroup>(R.id.gender)
         val male = findViewById<RadioButton>(R.id.radiobutton1)

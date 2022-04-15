@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val url = "https://fi-backend.herokuapp.com/api/invite/verify/"
+        val url = Constant.Verifyurl
         val VideoView = findViewById<VideoView>(R.id.video)
         val verifybutton = findViewById<Button>(R.id.loginButton)
         val mediaController = MediaController(this)
@@ -77,8 +77,9 @@ class MainActivity : AppCompatActivity() {
 
                     Log.d("nova", response.get("response").toString())
                     val status= response.get("status").toString()
+                    Toast.makeText(applicationContext,status,Toast.LENGTH_LONG).show()
                     if (status.lowercase() =="success"){
-                        val intent = Intent(this ,maindashboard::class.java)
+                        val intent = Intent(this ,RegisterActivity::class.java)
                         intent.putExtra("usermobile", usermobile.text.toString())
                         startActivity(intent)
                         finish()
@@ -92,7 +93,7 @@ class MainActivity : AppCompatActivity() {
                 }, {
                     Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
                     Log.d("nova",it.message.toString())
-                    startActivity(Intent(this ,Notamember::class.java))
+                    startActivity(Intent(this ,statementscreen::class.java))
                     finish()
                 }
              )

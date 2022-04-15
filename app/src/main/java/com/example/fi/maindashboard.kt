@@ -3,13 +3,17 @@ package com.example.fi
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
+import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+
 
 class maindashboard : AppCompatActivity() {
 
@@ -29,9 +33,20 @@ class maindashboard : AppCompatActivity() {
 
         Toast.makeText(this,AUTH_TOKEN,Toast.LENGTH_LONG).show()
 
+        val stk: TableLayout = findViewById<View>(R.id.tablelayout) as TableLayout
+
+        val tbrow = TableRow(this)
+        val t1v = TextView(this)
+        t1v.text = "BOX1"
+        t1v.getResources().getColor(R.color.orange)
+        t1v.gravity = Gravity.CENTER
+        t1v.setBackgroundResource(R.drawable.bgtable)
+        tbrow.addView(t1v)
+        stk.addView(tbrow)
+
 
         menubtn.setOnClickListener {
-            startActivity(Intent(this,test::class.java))
+            startActivity(Intent(this,Menu::class.java))
 
         }
 

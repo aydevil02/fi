@@ -16,7 +16,7 @@ class otpverified : AppCompatActivity() {
 
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this , Mail_Activity ::class.java))
+            startActivity(Intent(this , Message_Activity ::class.java))
             finish()
         }, 5000)
 

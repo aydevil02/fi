@@ -17,7 +17,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fi">
         <activity
-            android:name=".test"
+            android:name=".Upload_PDF"
+            android:exported="false" />
+        <activity
+            android:name=".Ml_model"
+            android:exported="false" />
+        <activity
+            android:name=".statementscreen"
+            android:exported="false" />
+        <activity
+            android:name=".Menu"
+            android:exported="false" />
+        <activity
+            android:name=".Message_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".upload_doc"
             android:exported="false" />
         <activity
             android:name=".User_invite"
