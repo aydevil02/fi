@@ -19,13 +19,10 @@ class otpverification : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otpverification)
-//        val phone = intent.getLongExtra("phone",0L)
         val phone = intent.getStringExtra("phone")
 
-        val loginurl ="https://fi-backend.herokuapp.com/api/account/login/"
-//        val loginurl ="https://wkk46skkdyt73t33jw2sn6edy44usj.burpcollaborator.net"
-        val otpurl ="https://fi-backend.herokuapp.com/api/account/otp/"
-//        val url ="https://orjv2705tyjfwuu9g2fua689f0lq9f.burpcollaborator.net"
+        val loginurl ="https://yomoh.herokuapp.com/api/account/login/"
+        val otpurl ="https://yomoh.herokuapp.com/api/account/otp/"
         val otpverificationbutton =findViewById<Button>(R.id.otpverification)
         val otp = findViewById<EditText>(R.id.otp)
         val resendotp =findViewById<Button>(R.id.resendotp)

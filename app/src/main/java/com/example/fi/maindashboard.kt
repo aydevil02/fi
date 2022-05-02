@@ -75,7 +75,7 @@ class maindashboard : AppCompatActivity() {
 //                    Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()}
 
             }, {
-                Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
+//                Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
                 Log.d("nova",it.message.toString())
 
             }

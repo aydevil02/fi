@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/black">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/black">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/labelcolumn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/custom_button_2"
+                android:text="Groups"
+                android:gravity="center"
+                android:textColor="@color/orange"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/datecolumn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/custom_button_2"
+                android:gravity="center"
+                android:text="Date"
+                android:textColor="@color/orange"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/descriptioncolumn"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/custom_button_2"
+                android:gravity="center"
+                android:text="Description"
+                android:lines="2"
+                android:textColor="@color/orange"
+                android:textSize="15dp" />
+
+
+            <TextView
+                android:id="@+id/depositcolumn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/custom_button_2"
+                android:gravity="center"
+                android:text="Deposit"
+                android:textColor="@color/orange"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/withdrawcolumn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/custom_button_2"
+                android:text="Withdraw"
+                android:textColor="@color/orange"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/balancecolumn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/custom_button_2"
+                android:text="Balance"
+                android:textColor="@color/orange"
+                android:textSize="15dp" />
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/monthcolumn"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:background="@drawable/custom_button_2"-->
+<!--                android:text="Month"-->
+<!--                android:textColor="@color/orange"-->
+<!--                android:textSize="15dp" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/typecolumn"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:background="@drawable/custom_button_2"-->
+<!--                android:text="Type"-->
+<!--                android:textColor="@color/orange"-->
+<!--                android:textSize="15dp" />-->
+
+            <Spinner
+                android:id="@+id/userinput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/userinput"
+                />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+
+</androidx.cardview.widget.CardView>

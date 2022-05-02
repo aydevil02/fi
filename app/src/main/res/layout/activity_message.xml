@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Message_Activity"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_margin="15dp"
+    android:background="@color/black">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:text="Important Message"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:textColor="@color/orange"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/custombutton"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textColor="@color/orange"
+        android:textAlignment="center"
+        android:text=" We provide you with a tool to help you access health of your monthly cash flows. \n\n
+To proceed with the assessment please upload your latest  e-statement for your Xxx  Bank account you receive in your email. Please note, for the tool to be effective and perform useful assessment, we suggest you to upload atleast 3-6 month statement.\n\n
+Incase the statement is password protected, you will be asked to type the  password. The password you type would be encrypted and saved in the same form to be unreadable by human user.\n\n
+Incase you choose not to share your bank statement, please click on the link ( on click it will go to the next dashboard screen)  "/>
+
+    <Button
+        android:id="@+id/proceed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Proceed"
+        android:textColor="@color/black"
+        android:background="@drawable/custombutton"/>
+    <Button
+        android:id="@+id/skip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Skip"
+        android:textColor="@color/Dullorange"
+        android:background="@drawable/custombutton3"/>
+
+</LinearLayout>

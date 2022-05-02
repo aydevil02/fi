@@ -36,7 +36,7 @@
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_member_registeration_sucessful.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_menu.xml" value="0.264" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_message.xml" value="0.264" />
-        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_ml_model.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_ml_model.xml" value="0.264" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_ml_output.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_notamember.xml" value="0.264" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_otpverification.xml" value="0.25416666666666665" />
@@ -49,6 +49,9 @@
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_upload_doc.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_upload_pdf.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/activity_user_invite.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/cardview_maindash_board.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/cardview_ml_input.xml" value="0.2223731884057971" />
+        <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/cardviewmltable.xml" value="0.2" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/menuActivity.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/menuactivity.xml" value="0.25" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/nav_header.xml" value="0.25416666666666665" />

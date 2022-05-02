@@ -21,7 +21,7 @@ class login_activity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
 
-        val url = "https://fi-backend.herokuapp.com/api/account/otp/"
+        val url = Constant.Loginurl
         val VideoView = findViewById<VideoView>(R.id.video)
         val login = findViewById<Button>(R.id.loginButton)
         val mediaController = MediaController(this)

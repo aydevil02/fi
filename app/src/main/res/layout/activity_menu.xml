@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:id="@+id/drawerLayout"
+    tools:context=".Menu"
+    android:gravity="center"
+    android:padding="10dp"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UserName"
+        android:layout_gravity="start"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/orange"
+        android:textSize="40dp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/maindashboard"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:text="Main           DAshBoard"
+            android:textColor="@color/black"
+            android:background="@drawable/custombutton"
+            />
+        <Button
+            android:id="@+id/statement"
+            android:layout_width="150dp"
+            android:layout_margin="20dp"
+            android:layout_height="100dp"
+            android:text="Statement"
+            android:textColor="@color/black"
+            android:background="@drawable/custombutton"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/invitefriend"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:text="Invite Friend"
+            android:textColor="@color/black"
+            android:background="@drawable/custombutton"/>
+        <Button
+            android:id="@+id/uploadDocument"
+            android:layout_width="150dp"
+            android:layout_margin="20dp"
+            android:layout_height="100dp"
+            android:text="Upload Document"
+            android:textColor="@color/black"
+            android:background="@drawable/custombutton"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/Mloutput"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:text="Ml Output"
+            android:textColor="@color/black"
+            android:background="@drawable/custombutton"/>
+        <Button
+            android:id="@+id/future"
+            android:layout_width="150dp"
+            android:layout_margin="20dp"
+            android:layout_height="100dp"
+            android:text="future"
+            android:textColor="@color/black"
+            android:background="@drawable/custombutton"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
-        android:text="We Will Reply To Your Request Shortly Via Mail/SMS "
+        android:text="We Will Reply To Your Request Shortly Via SMS "
         android:textColor="@color/orange"
         android:textSize="25dp"
         android:layout_gravity="center"

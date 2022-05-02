@@ -78,6 +78,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("nova", response.get("response").toString())
                     val status= response.get("status").toString()
                     Toast.makeText(applicationContext,status,Toast.LENGTH_LONG).show()
+                    Log.d("nova",status)
                     if (status.lowercase() =="success"){
                         val intent = Intent(this ,RegisterActivity::class.java)
                         intent.putExtra("usermobile", usermobile.text.toString())
