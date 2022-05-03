@@ -51,7 +51,7 @@ public class Upload_PDF extends AppCompatActivity implements After_Request {
             @Override
             public void onClick(View view) {
 
-                set_img.setImageResource(R.drawable.pdficon);
+
 
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -81,15 +81,19 @@ public class Upload_PDF extends AppCompatActivity implements After_Request {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK)
+        if (resultCode == Activity.RESULT_OK&& data != null) {
             if (data == null) {
+                Toast.makeText(this, "Select a file", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-        Uri uri = data.getData();
-        String paths = uri.getPath().split(":")[1];
-        Log.d("File Path : ", "" + paths);
-        file_path = paths;
+            Uri uri = data.getData();
+            String paths = uri.getPath().split(":")[1];
+            Log.d("File Path : ", "" + paths);
+            file_path = paths;
+        }else {
+            Toast.makeText(this, "Select a file", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

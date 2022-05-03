@@ -2,6 +2,7 @@ package com.example.fi;
 
 
 import android.content.Context;
+import android.media.session.MediaSession;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -26,6 +27,27 @@ import okhttp3.Response;
 
 
 public class SendRequest{
+
+
+    public static void Run_ml(Context context){
+        OkHttpClient client = new OkHttpClient();
+        String Token = "Authorization"+"Token " + Sharedpereference.getAuthCode(context);
+
+        // RequestBody body = RequestBody.create(JSON, json); // old
+        Request request = new Request.Builder()
+                .url(Constant.INSTANCE.getRun_ML())
+                .addHeader("Authorization","Token " + Sharedpereference.getAuthCode(context))
+                .build();
+        Response response = null;
+        try {
+            response = client.newCall(request).execute();
+            Log.d("nova1", response.body().string());
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.d("nova1",e.toString());
+        }
+
+    }
 
     public static void uploadPdf(String path , Context context){
         UploadTask uploadTask = new UploadTask(context);
@@ -59,7 +81,7 @@ public class SendRequest{
                     String resp = response.body().string();
                     JSONObject Jobject = new JSONObject(resp);
                     Jobj[0] = Jobject.getJSONObject("response");
-                    Log.d("nova", String.valueOf(Jobject.length()));
+                    Log.d("nova", String.valueOf(Jobject));
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                     Log.d("nova-SendRequest",e.toString());
@@ -72,11 +94,44 @@ public class SendRequest{
         n1.start();
 
         n1.join();
-        Log.d("nova-SendRequest",Jobj[0].toString());
+//        Log.d("nova-SendRequest",Jobj[0].toString());
         return Jobj[0];
 
     }
 
+    public static void sendUserInput(JSONObject userInputs, Context context) throws InterruptedException {
+        Log.d("nova","Going to send request");
+        final MediaType JSON
+                = MediaType.parse("application/json; charset=utf-8");
+        Thread n1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                OkHttpClient client = new OkHttpClient();
+
+                    RequestBody body = RequestBody.create(String.valueOf(userInputs), JSON); // new
+                    // RequestBody body = RequestBody.create(JSON, json); // old
+                    Request request = new Request.Builder()
+                            .url(Constant.INSTANCE.getPUSH_USER_INPUT())
+                            .addHeader("Authorization","Token " + Sharedpereference.getAuthCode(context))
+                            .post(body)
+                            .build();
+                Response response = null;
+                try {
+                    response = client.newCall(request).execute();
+                    Log.d("nova", response.body().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.d("nova",e.toString());
+                }
+
+
+            }
+        });
+        n1.start();
+
+        n1.join();
+    }
 
 }
 
@@ -151,4 +206,5 @@ class UploadTask extends AsyncTask<String, String, String> {
         }
         return null;
     }
+
 }

@@ -6,7 +6,6 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -52,7 +51,7 @@ class otpverification : AppCompatActivity() {
                             editor.apply()
                             editor.commit()
                             Toast.makeText(applicationContext, "Token: " + response["Token"], Toast.LENGTH_LONG).show()
-                            startActivity(Intent(this , otpverified ::class.java))
+                            startActivity(Intent(this , Otpverified ::class.java))
                             finish()
                         }
                         else{
@@ -82,7 +81,7 @@ class otpverification : AppCompatActivity() {
                         val status= response.get("status").toString()
                         if (status.lowercase() =="success"){
 
-                            startActivity(Intent(this ,otpverified::class.java))
+                            startActivity(Intent(this ,Otpverified::class.java))
                         }
                         else{
                             Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()}

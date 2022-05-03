@@ -1,5 +1,6 @@
 package com.example.fi
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -7,16 +8,21 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
+import org.json.JSONArray
 import org.json.JSONObject
 
-class RecyclerAdapter_ML_Table(val list : ArrayList<JSONObject>) : RecyclerView.Adapter<RecyclerAdapter_ML_Table.ViewHolder>()  {
+class RecyclerAdapter_ML_Table(val list : ArrayList<JSONObject>,val context : Context) : RecyclerView.Adapter<RecyclerAdapter_ML_Table.ViewHolder>()  {
 
+    var cluster_group = "-1"
 
+    var userInputs = JSONObject()
 
-
+    fun submitUserInput()
+    {
+        Log.d("nova", "LOgg Success\n$userInputs")
+        SendRequest.sendUserInput(userInputs,context)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): RecyclerAdapter_ML_Table.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.cardview_ml_input , parent , false)
@@ -34,26 +40,48 @@ class RecyclerAdapter_ML_Table(val list : ArrayList<JSONObject>) : RecyclerView.
 //        holder.type.text=list[position]["type"].toString()
         var userinput_value : String? = null
 //        var userinput = holder.userinput.selectedItem.toString()
-        holder.userinput.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                adapterView: AdapterView<*>?,
-                view: View?,
-                pos: Int,
-                id: Long
-            ) {
-                 userinput_value = adapterView?.getItemAtPosition(pos).toString()
-                Log.d("Nova lOdu", holder.adapterPosition.toString())
+         if( cluster_group !=  list[position]["clusterid"].toString()) {
+             cluster_group = list[position]["clusterid"].toString()
+             holder.userinput.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                 override fun onItemSelected(
+                     adapterView: AdapterView<*>?,
+                     view: View?,
+                     pos: Int,
+                     id: Long
+                 ) {
+                     userinput_value = adapterView?.getItemAtPosition(pos).toString()
+                     Log.d("Nova", holder.adapterPosition.toString())
+                    userInputUpdate(holder.labels.text.toString(), userinput_value!!)
+                 }
 
-            }
+                 override fun onNothingSelected(p0: AdapterView<*>?) {
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
+                 }
+             }
+         }
+        else{
+             holder.userinput.visibility = View.INVISIBLE
+         }
 
+
+
+
+    }
+
+    fun userInputUpdate(clusterID: String, input : String)
+    {
+//        var  = list
+        val obj = userInputs
+        for(item in list)
+        {
+            if(item["clusterid"].toString() == clusterID)
+            {
+
+
+                obj.put(item["id"].toString(),input)
             }
         }
-
-
-
-
+        userInputs = obj
     }
 
     override fun getItemCount(): Int {
@@ -86,4 +114,6 @@ class RecyclerAdapter_ML_Table(val list : ArrayList<JSONObject>) : RecyclerView.
 
 
     }
+
+
 }

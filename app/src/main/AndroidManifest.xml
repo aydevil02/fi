@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fi">
         <activity
+            android:name=".Loadind_Screen_Get_Cashflow"
+            android:exported="false" />
+        <activity
             android:name=".Ml_output"
             android:exported="false" />
         <activity
@@ -54,7 +57,7 @@
             android:name=".maindashboard"
             android:exported="false" />
         <activity
-            android:name=".otpverified"
+            android:name=".Otpverified"
             android:exported="false" />
         <activity
             android:name=".otpverification"
