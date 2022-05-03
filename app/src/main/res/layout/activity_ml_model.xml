@@ -151,4 +151,12 @@
 
     </HorizontalScrollView>
 
+    <Button
+        android:id="@+id/submitUserInput"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Submit"
+        />
+
+
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.fi
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,7 @@ import org.json.JSONObject
 class Mlmodel: AppCompatActivity() {
 
     private var LayoutManager : RecyclerView.LayoutManager? = null
-    private var adapter : RecyclerView.Adapter<RecyclerAdapter_ML_Table.ViewHolder>?=null
+//    private var adapter : RecyclerView.Adapter<RecyclerAdapter_ML_Table.ViewHolder>?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,7 @@ class Mlmodel: AppCompatActivity() {
         setContentView(R.layout.activity_ml_model)
 
 //        val get_data = GetData(applicationContext)
-
+            val submitBttn = findViewById<Button>(R.id.submitUserInput)
 //        get_data.getjsondata()
 //        Log.d("Abhi", get_data.toString())
         val extraction_data = SendRequest.getExtractionData(applicationContext);
@@ -46,9 +47,16 @@ class Mlmodel: AppCompatActivity() {
 
         LayoutManager =LinearLayoutManager(this)
 
+        val adapter =  RecyclerAdapter_ML_Table(list,applicationContext)
+
         recycler_ml_table.layoutManager = LayoutManager
-        adapter= RecyclerAdapter_ML_Table(list)
+//        adapter= RecyclerAdapter_ML_Table(list)
         recycler_ml_table.adapter = adapter
+        submitBttn.setOnClickListener {
+            adapter.submitUserInput()
+        }
+
+//        recycler_ml_table.adapter
 
 
 
