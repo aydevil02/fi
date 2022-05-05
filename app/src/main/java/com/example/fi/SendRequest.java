@@ -2,20 +2,17 @@ package com.example.fi;
 
 
 import android.content.Context;
-import android.media.session.MediaSession;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.fi.helper.Sharedpereference;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 
 import okhttp3.MediaType;
@@ -29,25 +26,80 @@ import okhttp3.Response;
 public class SendRequest{
 
 
-    public static void Run_ml(Context context){
-        OkHttpClient client = new OkHttpClient();
+    public static String Run_ml(Context context) throws InterruptedException {
+//        final JSONObject[] Jobj = new JSONObject[1];
+        final Response[] response = new Response[1];
+        final String[] status = {null};
+        Thread n1 = new Thread(new Runnable() {
+            @Override
+            public void run(){
+            OkHttpClient client = new OkHttpClient();
         String Token = "Authorization"+"Token " + Sharedpereference.getAuthCode(context);
 
-        // RequestBody body = RequestBody.create(JSON, json); // old
+         RequestBody body = RequestBody.create("JSON", MediaType.parse("json")); // old
         Request request = new Request.Builder()
                 .url(Constant.INSTANCE.getRun_ML())
                 .addHeader("Authorization","Token " + Sharedpereference.getAuthCode(context))
+                .post(RequestBody.create(null, new byte[]{}))
                 .build();
-        Response response = null;
+
         try {
-            response = client.newCall(request).execute();
-            Log.d("nova1", response.body().string());
-        } catch (IOException e) {
+            Response response = client.newCall(request).execute();
+            String resp = response.body().string();
+            JSONObject Jobject = new JSONObject(resp);
+            status[0] = String.valueOf(Jobject.getString("status"));
+            Log.d("nova", String.valueOf(Jobject));
+            Log.d("nova1", status[0]);
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
             Log.d("nova1",e.toString());
         }
+            }
+        });
+        n1.start();
 
+        n1.join();
+//    return Jobj[0] ;
+    return status[0];
     }
+
+    public static String Run_Extraction(Context context) throws InterruptedException {
+//        final JSONObject[] Jobj = new JSONObject[1];
+        final Response[] response = new Response[1];
+        final String[] status = {null};
+        Thread n1 = new Thread(new Runnable() {
+            @Override
+            public void run(){
+                OkHttpClient client = new OkHttpClient();
+                String Token = "Authorization"+"Token " + Sharedpereference.getAuthCode(context);
+
+                RequestBody body = RequestBody.create("JSON", MediaType.parse("json")); // old
+                Request request = new Request.Builder()
+                        .url(Constant.INSTANCE.getExtraction_data())
+                        .addHeader("Authorization","Token " + Sharedpereference.getAuthCode(context))
+                        .post(RequestBody.create(null, new byte[]{}))
+                        .build();
+
+                try {
+                    Response response = client.newCall(request).execute();
+                    String resp = response.body().string();
+                    JSONObject Jobject = new JSONObject(resp);
+                    status[0] = String.valueOf(Jobject.getString("status"));
+                    Log.d("nova", String.valueOf(Jobject));
+                    Log.d("nova1", status[0]);
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                    Log.d("nova1",e.toString());
+                }
+            }
+        });
+        n1.start();
+
+        n1.join();
+//    return Jobj[0] ;
+        return status[0];
+    }
+
 
     public static void uploadPdf(String path , Context context){
         UploadTask uploadTask = new UploadTask(context);
@@ -87,8 +139,6 @@ public class SendRequest{
                     Log.d("nova-SendRequest",e.toString());
                 }
                 Log.d("nova","Almost done");
-
-
             }
         });
         n1.start();

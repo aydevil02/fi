@@ -518,9 +518,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_marginTop="5dp"
             android:layout_height="1dp"
-            android:background="@drawable/custombutton"/>
+            android:layout_marginTop="5dp"
+            android:background="@drawable/custombutton" />
 
 
         <LinearLayout

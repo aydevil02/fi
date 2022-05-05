@@ -8,6 +8,7 @@ import android.os.Looper
 import android.widget.TextView
 
 class Otpverified : AppCompatActivity() {
+    val TAG = "Otpverified_TAG"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otpverified)

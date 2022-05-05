@@ -16,6 +16,7 @@ import com.android.volley.toolbox.Volley
 
 
 class maindashboard : AppCompatActivity() {
+    val TAG = "Dashboard_TAG"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +57,7 @@ class maindashboard : AppCompatActivity() {
             {
                     response->
 
-                Log.d("nova", response.toString())
+                Log.d(TAG, response.toString())
 //                Log.d("nova 2", otp + " " + phone)
 
 //                val status= response.get("status").toString()
@@ -76,7 +77,7 @@ class maindashboard : AppCompatActivity() {
 
             }, {
 //                Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
-                Log.d("nova",it.message.toString())
+                Log.d(TAG,it.message.toString())
 
             }
         )

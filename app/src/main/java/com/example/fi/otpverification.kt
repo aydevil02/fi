@@ -15,6 +15,7 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
 class otpverification : AppCompatActivity() {
+    val TAG = "Otpverification_TAG"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otpverification)
@@ -39,8 +40,8 @@ class otpverification : AppCompatActivity() {
                     {
                             response->
 
-                        Log.d("nova", response.toString())
-                        Log.d("nova 2", otp + " " + phone)
+                        Log.d(TAG, response.toString())
+                        Log.d(TAG, otp + " " + phone)
 
                         val status= response.get("status").toString()
                         if (status.lowercase() =="success"){
@@ -59,12 +60,12 @@ class otpverification : AppCompatActivity() {
 
                     }, {
                         Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
-                        Log.d("nova",it.message.toString())
+                        Log.d(TAG,it.message.toString())
 
                     }
                 )
                 que.add(req)
-                Log.d("nova 3 ", req.body.toString())
+                Log.d(TAG, req.body.toString())
             }
             resendotp.setOnClickListener {
                 val otp =otp.text.toString()
@@ -77,7 +78,7 @@ class otpverification : AppCompatActivity() {
                     {
                             response->
 
-                        Log.d("nova", response.toString())
+                        Log.d(TAG, response.toString())
                         val status= response.get("status").toString()
                         if (status.lowercase() =="success"){
 
@@ -88,7 +89,7 @@ class otpverification : AppCompatActivity() {
 
                     }, {
                         Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
-                        Log.d("nova",it.message.toString())
+                        Log.d(TAG,it.message.toString())
 
                     }
                 )

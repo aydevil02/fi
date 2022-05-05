@@ -1,9 +1,11 @@
 package com.example.fi
 
 import android.accessibilityservice.GestureDescription
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -61,9 +63,15 @@ class Mlmodel: AppCompatActivity() {
         recycler_ml_table.adapter = adapter
         submitBttn.setOnClickListener {
             adapter.submitUserInput()
-            SendRequest.Run_ml(applicationContext)
-            val TOKEN = "Token " + Sharedpereference.getAuthCode(applicationContext)
-            Log.d(TAG, TOKEN)
+            var status : String = SendRequest.Run_ml(applicationContext)
+            if (status!=null){
+            if (status.lowercase()=="success"){
+                startActivity(Intent(this , Loadind_Screen_Get_Cashflow::class.java))
+            }
+            else{
+                Toast.makeText(this, "Something went wrong " ,Toast.LENGTH_LONG).show() }
+            }
+
         }
 
 //        recycler_ml_table.adapter

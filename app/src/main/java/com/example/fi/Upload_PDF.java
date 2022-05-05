@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,8 @@ public class Upload_PDF extends AppCompatActivity implements After_Request {
         Button upload = findViewById(R.id.uploadfile);
         Button skip = findViewById(R.id.skipfornow);
         Button proceednxt = findViewById(R.id.proceednxt);
+        ProgressBar progressBar = findViewById(R.id.uploadpdfprogress);
+        progressBar.setVisibility(View.GONE);
 
 
         skip.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +45,11 @@ public class Upload_PDF extends AppCompatActivity implements After_Request {
         proceednxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try {
+                    SendRequest.Run_Extraction(getApplicationContext());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 Intent i = new Intent(Upload_PDF.this,Mlmodel.class);
                 startActivity(i);
             }
@@ -71,6 +79,7 @@ public class Upload_PDF extends AppCompatActivity implements After_Request {
                     Toast.makeText(Upload_PDF.this, "select file", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                progressBar.setVisibility(View.VISIBLE);
 
                 SendRequest.uploadPdf(file_path , getApplicationContext());
             }

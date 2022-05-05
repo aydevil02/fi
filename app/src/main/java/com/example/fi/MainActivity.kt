@@ -17,6 +17,7 @@ import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity() {
+    val TAG ="MainActivityTag"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

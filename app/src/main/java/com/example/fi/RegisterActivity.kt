@@ -18,6 +18,7 @@ import org.json.JSONObject
 import java.util.*
 
 class RegisterActivity : AppCompatActivity()  {
+    val TAG = "Register_TAG"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)

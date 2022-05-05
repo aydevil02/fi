@@ -12,6 +12,7 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
 class Notamember : AppCompatActivity() {
+    val TAG = "Notamember_TAG"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notamember)
@@ -23,7 +24,7 @@ class Notamember : AppCompatActivity() {
         val qualification = findViewById<Spinner>(R.id.qualificationspinnerForRegisteration)
         val bank = findViewById<Spinner>(R.id.bankspinnerForRegisteration)
         val jsonobj = JSONObject()
-        val url = "https://fi-backend.herokuapp.com/api/account/register/"
+        val url = Constant.Registerurl
         var qualtext = ""
         var gendertxt = "male"
         var banktxt=""
@@ -84,10 +85,10 @@ class Notamember : AppCompatActivity() {
                 {
                         response->
 
-                    Log.d("nova", response.get("response").toString())
+                    Log.d(TAG, response.get("response").toString())
                     val status= response.get("status").toString()
                     if (status.lowercase() =="success"){
-                        Log.d("Abhi", gender)
+                        Log.d(TAG, gender)
                         Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()
                         startActivity(Intent(this ,Member_registeration_sucessful::class.java))
                     }
@@ -95,7 +96,7 @@ class Notamember : AppCompatActivity() {
 
                 }, {
                     Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
-                    Log.d("nova",it.message.toString())
+                    Log.d(TAG,it.message.toString())
 
                 }
 

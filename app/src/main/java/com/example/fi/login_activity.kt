@@ -16,9 +16,12 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
 class login_activity : AppCompatActivity() {
+    val TAG = "Login_TAG"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+
 
 
         val url = Constant.Loginurl
@@ -70,7 +73,7 @@ class login_activity : AppCompatActivity() {
                 {
                         response->
 
-                    Log.d("nova", response.get("response").toString())
+                    Log.d(TAG, response.get("response").toString())
                     val status= response.get("status").toString()
                     if (status.lowercase() =="success"){
                         val intent = Intent(this ,otpverification::class.java)
@@ -84,7 +87,7 @@ class login_activity : AppCompatActivity() {
 
                 }, {
                     Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
-                    Log.d("nova",it.message.toString())
+                    Log.d(TAG,it.message.toString())
 
 
                 }

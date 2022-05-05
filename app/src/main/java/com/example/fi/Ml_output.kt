@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class Ml_output : AppCompatActivity() {
+    val TAG = "Ml_output_TAG"
 
     private var layoutManager : RecyclerView.LayoutManager?= null
     private var adapter : RecyclerView.Adapter<Recycler_ML_Output.ViewHolder> ?= null
