@@ -43,7 +43,8 @@ class Mlmodel: AppCompatActivity() {
             var status : String = SendRequest.Run_ml(applicationContext)
             if (status!=null){
             if (status.lowercase()=="success"){
-                startActivity(Intent(this , Loadind_Screen_Get_Cashflow::class.java))
+                Toast.makeText(this, "Successfully updated analytical data", Toast.LENGTH_LONG).show()
+                startActivity(Intent(this , Ml_output::class.java))
             }
             else{
                 Toast.makeText(this, "Something went wrong " ,Toast.LENGTH_LONG).show() }

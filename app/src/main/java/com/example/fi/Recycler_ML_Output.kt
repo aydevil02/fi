@@ -1,5 +1,6 @@
 package com.example.fi
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,16 +8,17 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
+import org.json.JSONObject
 
-class Recycler_ML_Output : RecyclerView.Adapter<Recycler_ML_Output.ViewHolder>() {
-    var datevalueml = arrayOf("1")
-    var descriptionvalueml = arrayOf("des")
-    var depositvalueml = arrayOf("depositvalue")
-    var withdrawvalueml = arrayOf("100")
-    var balancevalueml = arrayOf("10000")
-    var labelvalueml = arrayOf("0")
-    var monthvalueml = arrayOf("9")
-    var typevalueml = arrayOf("12")
+class Recycler_ML_Output(val list : ArrayList<JSONObject>, val context : Context) : RecyclerView.Adapter<Recycler_ML_Output.ViewHolder>() {
+//    var datevalueml = arrayOf("1")
+//    var descriptionvalueml = arrayOf("des")
+//    var depositvalueml = arrayOf("depositvalue")
+//    var withdrawvalueml = arrayOf("100")
+//    var balancevalueml = arrayOf("10000")
+//    var labelvalueml = arrayOf("0")
+//    var monthvalueml = arrayOf("9")
+//    var typevalueml = arrayOf("12")
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -27,38 +29,38 @@ class Recycler_ML_Output : RecyclerView.Adapter<Recycler_ML_Output.ViewHolder>()
     }
 
     override fun onBindViewHolder(holder: Recycler_ML_Output.ViewHolder, position: Int) {
-        holder.dateml.text = datevalueml[position]
-        holder.descriptionml.text =descriptionvalueml[position]
-        holder.depositml.text = depositvalueml[position]
-        holder.withdrawml.text = withdrawvalueml[position]
-        holder.balanceml.text = balancevalueml[position]
-        holder.labelsml.text= labelvalueml[position]
-        holder.monthml.text = monthvalueml[position]
-        holder.typeml.text=typevalueml[position]
+        holder.dateml.text = list[position]["year"].toString() + "/" + list[position]["month"].toString()
+        holder.inflow.text =list[position]["inflow"].toString()
+        holder.outflow.text = list[position]["outflow"].toString()
+        holder.fixed.text = list[position]["fixed"].toString()
+        holder.variable.text = list[position]["variable"].toString()
+//        holder.labelsml.text= labelvalueml[position]
+        holder.netCash.text = list[position]["netcashflow"].toString()
+        holder.review.text=list[position]["review"].toString()
     }
 
     override fun getItemCount(): Int {
-        return datevalueml.size
+        return list.size
     }
     inner class ViewHolder(itemView : View ) : RecyclerView.ViewHolder(itemView){
         var dateml : TextView
-        var descriptionml : TextView
-        var depositml : TextView
-        var withdrawml : TextView
-        var balanceml : TextView
-        var labelsml : TextView
-        var monthml : TextView
-        var typeml : TextView
+        var inflow : TextView
+        var outflow : TextView
+        var fixed : TextView
+        var variable : TextView
+//        var labelsml : TextView
+        var netCash : TextView
+        var review : TextView
 
         init {
             dateml = itemView.findViewById(R.id.datecolumnml)
-            descriptionml = itemView.findViewById(R.id.descriptioncolumnml)
-            depositml = itemView.findViewById(R.id.depositcolumnml)
-            withdrawml = itemView.findViewById(R.id.withdrawcolumnml)
-            balanceml = itemView.findViewById(R.id.balancecolumnml)
-            labelsml = itemView.findViewById(R.id.labelcolumnml)
-            monthml = itemView.findViewById(R.id.monthcolumnml)
-            typeml = itemView.findViewById(R.id.typecolumnml)
+            inflow = itemView.findViewById(R.id.cashInflow)
+            outflow = itemView.findViewById(R.id.cashOutflow)
+            fixed = itemView.findViewById(R.id.fixed)
+            variable = itemView.findViewById(R.id.variable)
+//            labelsml = itemView.findViewById(R.id.)
+            netCash = itemView.findViewById(R.id.netcashflow)
+            review = itemView.findViewById(R.id.review)
         }
     }
 }

@@ -21,65 +21,65 @@
                 android:layout_marginStart="10dp"
                 android:background="@drawable/custom_button_2"
                 android:gravity="center"
-                android:text="Date"
+                android:text="Month-Year"
                 android:textColor="@color/orange"
                 android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/descriptioncolumnml"
+                android:id="@+id/cashInflow"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/custom_button_2"
                 android:gravity="center"
-                android:text="Description"
+                android:text="Cash inflow"
                 android:textColor="@color/orange"
                 android:textSize="15dp" />
 
 
             <TextView
-                android:id="@+id/depositcolumnml"
+                android:id="@+id/cashOutflow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/custom_button_2"
                 android:gravity="center"
-                android:text="Deposit"
+                android:text="Cash outflow"
                 android:textColor="@color/orange"
                 android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/withdrawcolumnml"
+                android:id="@+id/fixed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/custom_button_2"
-                android:text="Withdraw"
+                android:text="Fixed"
                 android:textColor="@color/orange"
                 android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/balancecolumnml"
+                android:id="@+id/variable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/custom_button_2"
-                android:text="Balance"
+                android:text="Variable"
                 android:textColor="@color/orange"
                 android:textSize="15dp" />
 
-            <TextView
-                android:id="@+id/labelcolumnml"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:background="@drawable/custom_button_2"
-                android:text="Labels"
-                android:textColor="@color/orange"
-                android:textSize="15dp" />
+<!--            <TextView-->
+<!--                android:id="@+id/labelcolumnml"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:background="@drawable/custom_button_2"-->
+<!--                android:text="Labels"-->
+<!--                android:textColor="@color/orange"-->
+<!--                android:textSize="15dp" />-->
 
             <TextView
-                android:id="@+id/monthcolumnml"
+                android:id="@+id/netcashflow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -89,7 +89,7 @@
                 android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/typecolumnml"
+                android:id="@+id/review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

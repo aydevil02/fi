@@ -106,6 +106,49 @@ public class SendRequest{
 //        uploadTask.execute(path);
     }
 
+    public static JSONObject getCashFlowData( Context context) throws InterruptedException {
+        Log.d("nova","Going to send request");
+        final JSONObject[] Jobj = new JSONObject[1];
+        final MediaType JSON
+                = MediaType.parse("application/json; charset=utf-8");
+        Thread n1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+
+                OkHttpClient client = new OkHttpClient();
+                RequestBody requestBody = new MultipartBody.Builder()
+                        .setType(MultipartBody.FORM)
+                        .addFormDataPart("fk", "you")
+                        .build();
+//                RequestBody body = RequestBody.create(JSON, String.valueOf(new String[]{"json"}));
+                Request request = new Request.Builder()
+                        .url(Constant.INSTANCE.getGet_ML_cashflow())
+                        .addHeader("Authorization", "Token " + Sharedpereference.getAuthCode(context))
+                        .post(requestBody)
+                        .build();
+                Response response = null;
+                try {
+                    response = client.newCall(request).execute();
+                    String resp = response.body().string();
+                    JSONObject Jobject = new JSONObject(resp);
+                    Jobj[0] = Jobject.getJSONObject("response");
+                    Log.d("nova", String.valueOf(Jobject));
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                    Log.d("nova-SendRequest",e.toString());
+                }
+                Log.d("nova","Almost done");
+            }
+        });
+        n1.start();
+
+        n1.join();
+//        Log.d("nova-SendRequest",Jobj[0].toString());
+        return Jobj[0];
+
+    }
+
     public static JSONObject getAnalyticsData( Context context) throws InterruptedException {
         Log.d("nova","Going to send request");
         final JSONObject[] Jobj = new JSONObject[1];
