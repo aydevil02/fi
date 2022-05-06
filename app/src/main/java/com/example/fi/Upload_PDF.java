@@ -4,8 +4,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,12 +17,24 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Upload_PDF extends AppCompatActivity implements After_Request {
+import com.example.fi.helper.Sharedpereference;
+
+import java.io.File;
+import java.util.Objects;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+public class Upload_PDF extends AppCompatActivity{
 
     private static final int PERMISSION_REQUEST_CODE = 1;
     private static final int ALL_FILE_REQUEST = 102;
     String  file_path;
-
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +45,7 @@ public class Upload_PDF extends AppCompatActivity implements After_Request {
         Button upload = findViewById(R.id.uploadfile);
         Button skip = findViewById(R.id.skipfornow);
         Button proceednxt = findViewById(R.id.proceednxt);
-        ProgressBar progressBar = findViewById(R.id.uploadpdfprogress);
+        progressBar = findViewById(R.id.uploadpdfprogress);
         progressBar.setVisibility(View.GONE);
 
 
@@ -45,11 +59,6 @@ public class Upload_PDF extends AppCompatActivity implements After_Request {
         proceednxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    SendRequest.Run_Extraction(getApplicationContext());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 Intent i = new Intent(Upload_PDF.this,Mlmodel.class);
                 startActivity(i);
             }
@@ -81,7 +90,23 @@ public class Upload_PDF extends AppCompatActivity implements After_Request {
                 }
                 progressBar.setVisibility(View.VISIBLE);
 
-                SendRequest.uploadPdf(file_path , getApplicationContext());
+//                SendRequest.uploadPdf(file_path , getApplicationContext());
+                UploadTask uploadTask = new UploadTask(getApplicationContext(),
+                        new After_Request() {
+                            @Override
+                            public void onFileUploadComplete(String status) {
+                                if(status.equalsIgnoreCase("success"))
+                                {
+                                    Toast.makeText(Upload_PDF.this, "File Upload Complete", Toast.LENGTH_SHORT).show();
+
+                                }
+                                else{
+                                    Toast.makeText(Upload_PDF.this, "I have failed you master", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                );
+                uploadTask.execute(file_path);
             }
         });
 
@@ -105,8 +130,4 @@ public class Upload_PDF extends AppCompatActivity implements After_Request {
         }
     }
 
-    @Override
-    public void upload_pdf_result(String response) {
-        Log.d("abhishek lodu",response.toString());
-    }
 }

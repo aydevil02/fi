@@ -25,6 +25,7 @@ import okhttp3.Response;
 
 public class SendRequest{
 
+    public static final String TAG = "nova send-request.java";
 
     public static String Run_ml(Context context) throws InterruptedException {
 //        final JSONObject[] Jobj = new JSONObject[1];
@@ -64,7 +65,6 @@ public class SendRequest{
     }
 
     public static String Run_Extraction(Context context) throws InterruptedException {
-//        final JSONObject[] Jobj = new JSONObject[1];
         final Response[] response = new Response[1];
         final String[] status = {null};
         Thread n1 = new Thread(new Runnable() {
@@ -102,11 +102,11 @@ public class SendRequest{
 
 
     public static void uploadPdf(String path , Context context){
-        UploadTask uploadTask = new UploadTask(context);
-        uploadTask.execute(path);
+//        UploadTask uploadTask = new UploadTask(context);
+//        uploadTask.execute(path);
     }
 
-    public static JSONObject getExtractionData( Context context) throws InterruptedException {
+    public static JSONObject getAnalyticsData( Context context) throws InterruptedException {
         Log.d("nova","Going to send request");
         final JSONObject[] Jobj = new JSONObject[1];
         final MediaType JSON
@@ -183,17 +183,18 @@ public class SendRequest{
         n1.join();
     }
 
-}
+    }
 
 
-class UploadTask extends AsyncTask<String, String, String> {
-
-
+class UploadTask extends AsyncTask<String, String, String>{
     public static final String TAG = "nova send-request.java";
     Context context ;
 
-    public UploadTask(Context context){
+    public After_Request after_request = null ;
+
+    public UploadTask(Context context , After_Request after_request){
         this.context = context;
+        this.after_request = after_request;
 
     }
 
@@ -209,6 +210,7 @@ class UploadTask extends AsyncTask<String, String, String> {
         if(s!=null){
             Log.d(TAG,"File Uploaded");
             Log.d(TAG, s);
+            after_request.onFileUploadComplete(s);
 //            after_request.upload_pdf_result(s);
 //            Toast.makeText(AdvanceFileUpload.this, , Toast.LENGTH_SHORT).show();
         }
@@ -223,7 +225,7 @@ class UploadTask extends AsyncTask<String, String, String> {
     protected String doInBackground(String... string) {
 
         File file1 = new File(string[0]);
-
+        String Jobj;
 
         try {
             RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
@@ -246,7 +248,9 @@ class UploadTask extends AsyncTask<String, String, String> {
             Log.d(TAG,"meeeeeh"+response.message());
             if (response.isSuccessful()) {
                 Log.d(TAG,response.body().toString());
-                return Objects.requireNonNull(response.body()).string();
+                JSONObject Jobject = new JSONObject(response.body().string());
+                Jobj = Jobject.getString("status");
+                return Jobj;
             } else {
                 return null;
             }
