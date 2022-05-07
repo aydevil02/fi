@@ -6,12 +6,123 @@
     android:layout_height="match_parent"
     tools:context=".Ml_output"
     android:background="@color/black"
+    android:padding="10dp"
     android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_ml_output"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/custom_button_2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/datecolumnml"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/custom_button_2"
+                    android:gravity="center"
+                    android:text="Month-Year"
+                    android:textColor="@color/orange"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/cashInflow"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/custom_button_2"
+                    android:gravity="center"
+                    android:text="Cash inflow"
+                    android:textColor="@color/orange"
+                    android:textSize="15dp" />
+
+
+                <TextView
+                    android:id="@+id/cashOutflow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/custom_button_2"
+                    android:gravity="center"
+                    android:text="Cash outflow"
+                    android:textColor="@color/orange"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/fixed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/custom_button_2"
+                    android:text="Fixed"
+                    android:textColor="@color/orange"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/variable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/custom_button_2"
+                    android:text="Variable"
+                    android:textColor="@color/orange"
+                    android:textSize="15dp" />
+
+                <!--            <TextView-->
+                <!--                android:id="@+id/labelcolumnml"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginStart="10dp"-->
+                <!--                android:background="@drawable/custom_button_2"-->
+                <!--                android:text="Labels"-->
+                <!--                android:textColor="@color/orange"-->
+                <!--                android:textSize="15dp" />-->
+
+                <TextView
+                    android:id="@+id/netcashflow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/custom_button_2"
+                    android:text="Month"
+                    android:textColor="@color/orange"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/review"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/custom_button_2"
+                    android:text="Type"
+                    android:textColor="@color/orange"
+                    android:textSize="15dp" />
+
+
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_ml_output"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
 
 </LinearLayout>

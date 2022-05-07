@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 
 import okhttp3.MediaType;
@@ -285,8 +286,12 @@ class UploadTask extends AsyncTask<String, String, String>{
                     .post(requestBody)
                     .build();
 
-            OkHttpClient okHttpClient = new OkHttpClient();
-            //now progressbar not showing properly let's fixed it
+            OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+                    .connectTimeout(15,TimeUnit.SECONDS)
+                    .writeTimeout(15, TimeUnit.SECONDS)
+                    .readTimeout(15, TimeUnit.SECONDS)
+                    .build();
+
             Response response = okHttpClient.newCall(request).execute();
             Log.d(TAG,"meeeeeh"+response.message());
             if (response.isSuccessful()) {
