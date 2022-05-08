@@ -81,8 +81,7 @@ class otpverification : AppCompatActivity() {
                         Log.d(TAG, response.toString())
                         val status= response.get("status").toString()
                         if (status.lowercase() =="success"){
-
-                            startActivity(Intent(this ,Otpverified::class.java))
+                            Toast.makeText(applicationContext, "OTP Send ", Toast.LENGTH_LONG).show()
                         }
                         else{
                             Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()}

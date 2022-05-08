@@ -118,7 +118,7 @@ public class Upload_PDF extends AppCompatActivity{
 
             Log.d("File Path : ", "" + paths);
             Log.d("File Path 2 : ", "" + uri.getPath());
-            file_path = uri.getPath();
+            file_path = paths;
         }else {
             Toast.makeText(this, "Select a file", Toast.LENGTH_SHORT).show();
         }
