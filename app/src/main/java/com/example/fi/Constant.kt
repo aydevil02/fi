@@ -9,6 +9,7 @@ object Constant {
     val Docuploadurl = "https://yomoh.herokuapp.com/api/upload/statement/"
     val  Verifyurl = "https://yomoh.herokuapp.com/api/invite/verify/"
     val Run_ML = "https://yomoh.herokuapp.com/api/analytics/citibank/"
+    val Run_EXTRACTION = "https://yomoh.herokuapp.com/api/extract/citibank/"
     val Loginurl = "https://yomoh.herokuapp.com/api/account/otp/"
     val Get_ML_cashflow = "https://yomoh.herokuapp.com/api/analytics/cashflow/"
     val Get_Ml_Data ="https://yomoh.herokuapp.com/api/analytics/cluster/"

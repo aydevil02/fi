@@ -27,8 +27,18 @@ import okhttp3.Response;
 public class SendRequest{
 
     public static final String TAG = "nova send-request.java";
+    Context context;
+     public SendRequest(Context context)
+     {
+         this.context = context;
+     }
 
-    public static String Run_ml(Context context) throws InterruptedException {
+     public boolean RunallModels() throws InterruptedException {
+         Run_Extraction();
+         return true;
+     }
+
+    public String Run_ml() throws InterruptedException {
 //        final JSONObject[] Jobj = new JSONObject[1];
         final Response[] response = new Response[1];
         final String[] status = {null};
@@ -48,6 +58,7 @@ public class SendRequest{
         try {
             Response response = client.newCall(request).execute();
             String resp = response.body().string();
+            Log.d("nova-uploaded-then",resp);
             JSONObject Jobject = new JSONObject(resp);
             status[0] = String.valueOf(Jobject.getString("status"));
             Log.d("nova", String.valueOf(Jobject));
@@ -65,7 +76,7 @@ public class SendRequest{
     return status[0];
     }
 
-    public static String Run_Extraction(Context context) throws InterruptedException {
+    public String Run_Extraction() throws InterruptedException {
         final Response[] response = new Response[1];
         final String[] status = {null};
         Thread n1 = new Thread(new Runnable() {
@@ -76,7 +87,7 @@ public class SendRequest{
 
                 RequestBody body = RequestBody.create("JSON", MediaType.parse("json")); // old
                 Request request = new Request.Builder()
-                        .url(Constant.INSTANCE.getExtraction_data())
+                        .url(Constant.INSTANCE.getRun_EXTRACTION())
                         .addHeader("Authorization","Token " + Sharedpereference.getAuthCode(context))
                         .post(RequestBody.create(null, new byte[]{}))
                         .build();
@@ -86,9 +97,13 @@ public class SendRequest{
                     String resp = response.body().string();
                     JSONObject Jobject = new JSONObject(resp);
                     status[0] = String.valueOf(Jobject.getString("status"));
-                    Log.d("nova", String.valueOf(Jobject));
-                    Log.d("nova1", status[0]);
-                } catch (IOException | JSONException e) {
+                    if(status[0].equalsIgnoreCase("Success"))
+                    {
+                        Run_ml();
+                    }
+//                    Log.d("nova", String.valueOf(Jobject));
+//                    Log.d("nova1 - etraction_func", status[0]);
+                } catch (IOException | JSONException | InterruptedException e) {
                     e.printStackTrace();
                     Log.d("nova1",e.toString());
                 }
@@ -107,7 +122,7 @@ public class SendRequest{
 //        uploadTask.execute(path);
     }
 
-    public static JSONObject getCashFlowData( Context context) throws InterruptedException {
+    public JSONObject getCashFlowData() throws InterruptedException {
         Log.d("nova","Going to send request");
         final JSONObject[] Jobj = new JSONObject[1];
         final MediaType JSON
@@ -150,48 +165,53 @@ public class SendRequest{
 
     }
 
-    public static JSONObject getAnalyticsData( Context context) throws InterruptedException {
-        Log.d("nova","Going to send request");
-        final JSONObject[] Jobj = new JSONObject[1];
-        final MediaType JSON
-                = MediaType.parse("application/json; charset=utf-8");
-        Thread n1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
+//    public static JSONObject getAnalyticsData( Context context) throws InterruptedException {
+//        Log.d("nova","Going to send request");
+//        final JSONObject[] Jobj = new JSONObject[1];
+//        final MediaType JSON
+//                = MediaType.parse("application/json; charset=utf-8");
+//        Thread n1 = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//
+//                OkHttpClient client = new OkHttpClient();
+//                RequestBody requestBody = new MultipartBody.Builder()
+//                        .setType(MultipartBody.FORM)
+//                        .addFormDataPart("fk", "you")
+//                        .build();
+////                RequestBody body = RequestBody.create(JSON, String.valueOf(new String[]{"json"}));
+//                Request request = new Request.Builder()
+//                        .url(Constant.INSTANCE.getGet_Ml_Data())
+//                        .addHeader("Authorization", "Token " + Sharedpereference.getAuthCode(context))
+//                        .post(requestBody)
+//                        .build();
+//                Response response = null;
+//                try {
+//                    response = client.newCall(request).execute();
+//                    String resp = response.body().string();
+//                    JSONObject Jobject = new JSONObject(resp);
+//                    Jobj[0] = Jobject.getJSONObject("response");
+//                    Log.d("nova", String.valueOf(Jobject));
+//                } catch (IOException | JSONException e) {
+//                    e.printStackTrace();
+//                    Log.d("nova-SendRequest",e.toString());
+//                }
+//                Log.d("nova","Almost done");
+//            }
+//        });
+//        n1.start();
+//
+//        n1.join();
+////        Log.d("nova-SendRequest",Jobj[0].toString());
+//        return Jobj[0];
+//
+//    }
 
-
-                OkHttpClient client = new OkHttpClient();
-                RequestBody requestBody = new MultipartBody.Builder()
-                        .setType(MultipartBody.FORM)
-                        .addFormDataPart("fk", "you")
-                        .build();
-//                RequestBody body = RequestBody.create(JSON, String.valueOf(new String[]{"json"}));
-                Request request = new Request.Builder()
-                        .url(Constant.INSTANCE.getGet_Ml_Data())
-                        .addHeader("Authorization", "Token " + Sharedpereference.getAuthCode(context))
-                        .post(requestBody)
-                        .build();
-                Response response = null;
-                try {
-                    response = client.newCall(request).execute();
-                    String resp = response.body().string();
-                    JSONObject Jobject = new JSONObject(resp);
-                    Jobj[0] = Jobject.getJSONObject("response");
-                    Log.d("nova", String.valueOf(Jobject));
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
-                    Log.d("nova-SendRequest",e.toString());
-                }
-                Log.d("nova","Almost done");
-            }
-        });
-        n1.start();
-
-        n1.join();
-//        Log.d("nova-SendRequest",Jobj[0].toString());
-        return Jobj[0];
-
-    }
+//    public static JSONObject getAnalyticsData( Context context) {
+//
+//
+//    }
 
     public static void sendUserInput(JSONObject userInputs, Context context) throws InterruptedException {
         Log.d("nova","Going to send request");
@@ -229,7 +249,6 @@ public class SendRequest{
 
     }
 
-
 class UploadTask extends AsyncTask<String, String, String>{
     public static final String TAG = "nova send-request.java";
     Context context ;
@@ -239,7 +258,8 @@ class UploadTask extends AsyncTask<String, String, String>{
     public UploadTask(Context context , After_Request after_request){
         this.context = context;
         this.after_request = after_request;
-
+        if(this.after_request !=null )
+            Log.d("nova","Going right");
     }
 
     @Override
@@ -286,7 +306,7 @@ class UploadTask extends AsyncTask<String, String, String>{
                     .post(requestBody)
                     .build();
 
-            OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .connectTimeout(15,TimeUnit.SECONDS)
                     .writeTimeout(15, TimeUnit.SECONDS)
                     .readTimeout(15, TimeUnit.SECONDS)

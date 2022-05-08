@@ -4,30 +4,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.fi.helper.Sharedpereference;
-
-import java.io.File;
-import java.util.Objects;
-
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class Upload_PDF extends AppCompatActivity{
 
@@ -95,13 +82,18 @@ public class Upload_PDF extends AppCompatActivity{
                         new After_Request() {
                             @Override
                             public void onFileUploadComplete(String status) {
+                                Toast.makeText(Upload_PDF.this, "File Upload " + status, Toast.LENGTH_SHORT).show();
                                 if(status.equalsIgnoreCase("success"))
                                 {
-                                    Toast.makeText(Upload_PDF.this, "File Upload Complete", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(Upload_PDF.this, "File Upload Complete", Toast.LENGTH_SHORT).show();
+                                    progressBar.setVisibility(View.GONE);
+                                    Intent i = new Intent(Upload_PDF.this,Mlmodel.class);
+                                    startActivity(i);
 
                                 }
                                 else{
                                     Toast.makeText(Upload_PDF.this, "I have failed you master", Toast.LENGTH_SHORT).show();
+                                    progressBar.setVisibility(View.GONE);
                                 }
                             }
                         }
@@ -123,8 +115,10 @@ public class Upload_PDF extends AppCompatActivity{
 
             Uri uri = data.getData();
             String paths = uri.getPath().split(":")[1];
+
             Log.d("File Path : ", "" + paths);
-            file_path = paths;
+            Log.d("File Path 2 : ", "" + uri.getPath());
+            file_path = uri.getPath();
         }else {
             Toast.makeText(this, "Select a file", Toast.LENGTH_SHORT).show();
         }

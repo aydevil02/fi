@@ -32,7 +32,7 @@ class Ml_output : AppCompatActivity() {
     }
 
     private fun Get_CashFlow() {
-        val cashflow_data = SendRequest.getCashFlowData(applicationContext)
+        val cashflow_data = SendRequest(applicationContext).getCashFlowData()
         val iter: Iterator<String> = cashflow_data.keys()
         while (iter.hasNext()) {
             val key = iter.next()
