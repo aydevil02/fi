@@ -3,12 +3,15 @@ package com.example.fi;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,10 +19,18 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 public class Upload_PDF extends AppCompatActivity{
 
     private static final int PERMISSION_REQUEST_CODE = 1;
     private static final int ALL_FILE_REQUEST = 102;
+    private static final String TAG ="Upload_PDF";
     String  file_path;
     ProgressBar progressBar;
     @Override
@@ -61,7 +72,7 @@ public class Upload_PDF extends AppCompatActivity{
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
                 intent.setType("application/pdf");
-
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 startActivityForResult(intent, ALL_FILE_REQUEST);
 
             }
@@ -114,7 +125,7 @@ public class Upload_PDF extends AppCompatActivity{
             }
 
             Uri uri = data.getData();
-            String paths = uri.getPath().split(":")[1];
+            String paths = copyFileToInternal(data.getData());
 
             Log.d("File Path : ", "" + paths);
             Log.d("File Path 2 : ", "" + uri.getPath());
@@ -122,6 +133,35 @@ public class Upload_PDF extends AppCompatActivity{
         }else {
             Toast.makeText(this, "Select a file", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private String copyFileToInternal(Uri fileUri){
+        Cursor theCursor = getContentResolver().query(fileUri,
+                new String[]{OpenableColumns.DISPLAY_NAME,OpenableColumns.SIZE},
+                null,null,null);
+        theCursor.moveToFirst();
+        @SuppressLint("Range") String displayName = theCursor.getString(theCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+        @SuppressLint("Range") long size = theCursor.getLong(theCursor.getColumnIndex(OpenableColumns.SIZE));
+        Log.d(TAG,"Size"+size );
+        Log.d(TAG,"Name"+displayName );
+        File theFile = new File(getFilesDir()+"/"+displayName);
+        try {
+            FileOutputStream fileoutputStream = new FileOutputStream(theFile);
+            InputStream inputStream = getContentResolver().openInputStream(fileUri);
+            byte buffer[] = new byte[1024];
+            int read ;
+            while ((read=inputStream.read(buffer))!= -1){
+                fileoutputStream.write(buffer,0,read);
+            }
+            inputStream.close();
+            fileoutputStream.close();
+            return theFile.getPath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return null;
     }
 
 }

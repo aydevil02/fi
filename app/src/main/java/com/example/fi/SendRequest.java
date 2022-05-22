@@ -2,6 +2,7 @@ package com.example.fi;
 
 
 import android.content.Context;
+import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.util.Log;
 

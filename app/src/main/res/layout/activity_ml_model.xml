@@ -95,7 +95,7 @@
                                         android:layout_marginStart="10dp"
                                         android:background="@drawable/custombutton"
                                         android:gravity="center"
-                                        android:text="Deposit"
+                                        android:text="Withdrawal"
                                         android:textColor="@color/black"
                                         android:textSize="15dp" />
 
@@ -105,7 +105,7 @@
                                         android:layout_marginStart="10dp"
                                         android:background="@drawable/custombutton"
                                         android:gravity="center"
-                                        android:text="Withdraw"
+                                        android:text="Deposit"
                                         android:textColor="@color/black"
                                         android:textSize="15dp" />
 
@@ -118,27 +118,6 @@
                                         android:text="Balance"
                                         android:textColor="@color/black"
                                         android:textSize="15dp" />
-
-
-                                    <!--                        <TextView-->
-                                    <!--                            android:layout_width="100dp"-->
-                                    <!--                            android:layout_height="wrap_content"-->
-                                    <!--                            android:layout_marginStart="10dp"-->
-                                    <!--                            android:background="@drawable/custombutton"-->
-                                    <!--                            android:text="Month"-->
-                                    <!--                            android:gravity="center"-->
-                                    <!--                            android:textColor="@color/black"-->
-                                    <!--                            android:textSize="15dp" />-->
-
-                                    <!--                        <TextView-->
-                                    <!--                            android:layout_width="100dp"-->
-                                    <!--                            android:layout_height="wrap_content"-->
-                                    <!--                            android:layout_marginStart="10dp"-->
-                                    <!--                            android:background="@drawable/custombutton"-->
-                                    <!--                            android:text="Type"-->
-                                    <!--                            android:gravity="center"-->
-                                    <!--                            android:textColor="@color/black"-->
-                                    <!--                            android:textSize="15dp" />-->
 
                                     <TextView
                                         android:layout_width="100dp"

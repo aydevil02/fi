@@ -14,160 +14,165 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_register.*
+import okhttp3.CertificatePinner
 import org.json.JSONObject
 import java.util.*
 
 class RegisterActivity : AppCompatActivity()  {
-    val TAG = "Register_TAG"
+
+    private lateinit var Tag : String
+    private lateinit var Url : String
+    private lateinit var Fullname :EditText
+    private lateinit var Gender : RadioGroup
+    private lateinit var  Male :RadioButton
+    private lateinit var  Female :RadioButton
+    private lateinit var  Other :RadioButton
+    private lateinit var Phone :TextView
+    private lateinit var Datetxt :TextView
+    private lateinit var Date :Button
+    private lateinit var Qualification : Spinner
+    private lateinit var Bank : Spinner
+    private lateinit var Pincode : EditText
+    private lateinit var Pan : EditText
+    private lateinit var Email : EditText
+    private lateinit var Registerbutton :Button
+    private lateinit var T1 : TextView
+    private lateinit var Jsonobj : JSONObject
+    var qualtext = ""
+    var gendertxt = "male"
+    var banktxt=""
+    var dob = ""
+
+
+    val mobileno = intent.getStringExtra("usermobile")
+
+
+
+//    val TAG = "Register_TAG"
+//    val url = Constant.Registerurl
+//    val fullname = findViewById<EditText>(R.id.name)
+//    val gender =findViewById<RadioGroup>(R.id.gender)
+//    val male = findViewById<RadioButton>(R.id.radiobutton1)
+//    val female = findViewById<RadioButton>(R.id.radiobutton2)
+//    val other = findViewById<RadioButton>(R.id.radiobutton3)
+//    val phone = findViewById<TextView>(R.id.mobileno)
+//    val datetxt = findViewById<TextView>(R.id.date_text)
+//    val date = findViewById<Button>(R.id.date_picker)
+//    val qualification =findViewById<Spinner>(R.id.qualificationspinner)
+//    val Bank = findViewById<Spinner>(R.id.bankspinner)
+//    val pincode =findViewById<EditText>(R.id.pincode)
+//    val pan = findViewById<EditText>(R.id.pan)
+//    val email =findViewById<EditText>(R.id.email)
+//    val registerbutton = findViewById<Button>(R.id.register_button)
+//    val t1 =findViewById<TextView>(R.id.t1)
+//    val jsonobj = JSONObject()
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        init()
 
-        val url = Constant.Registerurl
-        val fullname = findViewById<EditText>(R.id.name)
-        val gender =findViewById<RadioGroup>(R.id.gender)
-        val male = findViewById<RadioButton>(R.id.radiobutton1)
-        val female = findViewById<RadioButton>(R.id.radiobutton2)
-        val other = findViewById<RadioButton>(R.id.radiobutton3)
-        val mobileno = intent.getStringExtra("usermobile")
-        val phone = findViewById<TextView>(R.id.mobileno)
-        val datetxt = findViewById<TextView>(R.id.date_text)
-        val date = findViewById<Button>(R.id.date_picker)
-        val qualification =findViewById<Spinner>(R.id.qualificationspinner)
-        val Bank = findViewById<Spinner>(R.id.bankspinner)
-        val pincode =findViewById<EditText>(R.id.pincode)
-        val pan = findViewById<EditText>(R.id.pan)
-        val email =findViewById<EditText>(R.id.email)
-        val registerbutton = findViewById<Button>(R.id.register_button)
-        val t1 =findViewById<TextView>(R.id.t1)
-        val jsonobj = JSONObject()
-        var qualtext = ""
-        var gendertxt = "male"
-        var banktxt=""
-        var dob = ""
+
         val calender = Calendar.getInstance()
         val year = calender.get(Calendar.YEAR)
         val month = calender.get(Calendar.MONTH)
         val day = calender.get(Calendar.DAY_OF_MONTH)
 
-
-        phone.setText(mobileno)
-
-       date.setOnClickListener {
+       Phone.setText(mobileno)
+       Date.setOnClickListener {
            val dpd = DatePickerDialog(
                this , DatePickerDialog.OnDateSetListener {
                    View:DatePicker , mYear:Int ,mMonth:Int , mDay:Int  ->
-                   datetxt.setText(""+mDay +"/"+(mMonth +1)  +"/"+mYear)
+                   Datetxt.setText(""+mDay +"/"+(mMonth +1)  +"/"+mYear)
                }, year ,month ,day
            )
            dpd.show()
        }
-        dob == datetxt.text.toString()
-        fullname.addTextChangedListener(object : TextWatcher{
+        dob == Datetxt.text.toString()
+        Fullname.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
-
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
-
             override fun afterTextChanged(p0: Editable?) {
-                if( fullname.text.toString().length <= 5){
-                    registerbutton.isEnabled = false
-                    fullname.setError("Enter Your Name ")
+                if( Fullname.text.toString().length <= 5){
+                    Registerbutton.isEnabled = false
+                    Fullname.setError("Enter Your Name ")
                 }
                 else{
-                    registerbutton.isEnabled = true
+                    Registerbutton.isEnabled = true
                 }
             }
-
         })
-        pan.addTextChangedListener(object : TextWatcher{
+        Pan.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
-
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
-
             override fun afterTextChanged(p0: Editable?) {
                 if (pan.text.toString().length <10 && pan.text.toString().isEmpty() ){
-                    registerbutton.isEnabled = false
+                    Registerbutton.isEnabled = false
                     pan.setError("Invalid Pan Number")
                 }
                 else{
-                    registerbutton.isEnabled = true
+                    Registerbutton.isEnabled = true
                 }
             }
-
         })
-
-        email.addTextChangedListener(object : TextWatcher {
+        Email.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
             override fun afterTextChanged(p0: Editable?) {
                 if  (android.util.Patterns.EMAIL_ADDRESS.matcher(email.text.toString()).matches() && email.text.toString().isNotEmpty()){
-                    registerbutton.isEnabled = true
+                    Registerbutton.isEnabled = true
                 }
                 else {
-                    registerbutton.isEnabled = false
+                    Registerbutton.isEnabled = false
                     email.setError("Invalid Email")
 
                 }
-
             }
-
         })
-        pincode.addTextChangedListener(object : TextWatcher{
+        Pincode.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
-
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
-
             override fun afterTextChanged(p0: Editable?) {
                 val pincode_txt= pincode.text.toString()
                 if (pincode_txt.length< 6){
-                    registerbutton.isEnabled = false
+                    Registerbutton.isEnabled = false
                     pincode.setError("Enter Correct Pincode")
                 }
                 else{
-                    registerbutton.isEnabled = true
+                    Registerbutton.isEnabled = true
                 }
-
             }
-
         })
-
-
-        gender.setOnCheckedChangeListener { group, checkedId ->
+        Gender.setOnCheckedChangeListener { group, checkedId ->
             if(checkedId == R.id.male) {
-                t1.text = male.text.toString()
+                t1.text = Male.text.toString()
                 gendertxt = "male"
             }
             if (checkedId == R.id.female){
-                t1.text = female.text.toString()
+                t1.text = Female.text.toString()
                 gendertxt = "female" }
             if (checkedId == R.id.other){
-                t1.text = other.text.toString()
+                t1.text = Other.text.toString()
                 gendertxt= "other"}
         }
-
-
-
-        qualification.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        Qualification.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 qualtext = adapterView?.getItemAtPosition(position).toString()
                 Toast.makeText(this@RegisterActivity,"You Selected ${adapterView?.getItemAtPosition(position).toString()}",
                     Toast.LENGTH_LONG).show()
 
             }
-
             override fun onNothingSelected(p0: AdapterView<*>?) {
-
             }
         }
         Bank.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -175,67 +180,85 @@ class RegisterActivity : AppCompatActivity()  {
                banktxt = adapterView?.getItemAtPosition(position).toString()
                 Toast.makeText(this@RegisterActivity,"You Selected ${adapterView?.getItemAtPosition(position).toString()}",
                     Toast.LENGTH_LONG).show()
-
             }
-
             override fun onNothingSelected(p0: AdapterView<*>?) {
-
             }
-
         }
-
-        registerbutton.setOnClickListener{
-            val fullname = fullname.text.toString()
-            val gender =gendertxt
-            val mobileno =mobileno.toString()
-            val dob = dob
-            val qualification = qualtext
-            val bank = banktxt
-            val pincode = pincode.text.toString()
-            val pan =pan.text.toString()
-            val email =email.text.toString()
-            jsonobj.put("fullname" ,fullname)
-            jsonobj.put("gender",gender)
-            jsonobj.put("phone",mobileno)
-            jsonobj.put("dob",dob)
-            jsonobj.put("qualification",qualification)
-            jsonobj.put("bank",bank)
-            jsonobj.put("pincode",pincode)
-            jsonobj.put("pan",pan)
-            jsonobj.put("email",email)
-            val que = Volley.newRequestQueue(this@RegisterActivity)
-            val req1 = JsonObjectRequest(
-                Request.Method.POST,url,jsonobj,
-                {
-                        response->
-
-                    Log.d("nova", response.toString())
-                    val status= response.get(Constant.STATUS).toString()
-                    if (status.lowercase() =="success"){
-                        Log.d("Abhi", gender)
-                        Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()
-                        val intent = Intent(this ,otpverification::class.java)
-                        intent.putExtra("phone", mobileno)
-                        intent.putExtra("fullname" , fullname)
-                        intent.putExtra("bank",banktxt)
-                        startActivity(intent)
-                        finish()
-                    }
-                    else{Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()}
-
-                }, {
-                    Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
-                    Log.d("nova",it.message.toString())
-
-                }
-
-            )
-            que.add(req1)
+        Registerbutton.setOnClickListener{
+            InviitedUserRegistration()
         }
+    }
+    private fun init(){
+        Tag = "Register_TAG"
+        Url= Constant.Registerurl
+        Fullname= findViewById(R.id.name)
+        Gender=findViewById(R.id.gender)
+        Male= findViewById(R.id.radiobutton1)
+        Female = findViewById(R.id.radiobutton2)
+        Other = findViewById(R.id.radiobutton3)
+        Phone= findViewById(R.id.mobileno)
+        Datetxt= findViewById(R.id.date_text)
+        Date = findViewById(R.id.date_picker)
+        Qualification=findViewById(R.id.qualificationspinner)
+        Bank= findViewById(R.id.bankspinner)
+        Pincode=findViewById(R.id.pincode)
+        Pan =findViewById(R.id.pan)
+        Email =findViewById(R.id.email)
+        Registerbutton= findViewById(R.id.register_button)
+        T1=findViewById(R.id.t1)
+        Jsonobj= JSONObject()
 
     }
 
+    private fun InviitedUserRegistration() {
 
+        val fullname = Fullname.text.toString()
+        val gender =gendertxt
+        val mobileno =mobileno.toString()
+        val dob = dob
+        val qualification = qualtext
+        val bank = banktxt
+        val pincode = pincode.text.toString()
+        val pan =pan.text.toString()
+        val email =email.text.toString()
+        Jsonobj.put("fullname" ,fullname)
+        Jsonobj.put("gender",gender)
+        Jsonobj.put("phone",mobileno)
+        Jsonobj.put("dob",dob)
+        Jsonobj.put("qualification",qualification)
+        Jsonobj.put("bank",bank)
+        Jsonobj.put("pincode",pincode)
+        Jsonobj.put("pan",pan)
+        Jsonobj.put("email",email)
+        val que = Volley.newRequestQueue(this@RegisterActivity)
+        val req1 = JsonObjectRequest(
+            Request.Method.POST,Url,Jsonobj,
+            {
+                    response->
+
+                Log.d("nova", response.toString())
+                val status= response.get(Constant.STATUS).toString()
+                if (status.lowercase() =="success"){
+                    Log.d("Abhi", gender)
+                    Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this ,otpverification::class.java)
+                    intent.putExtra("phone", mobileno)
+                    intent.putExtra("fullname" , fullname)
+                    intent.putExtra("bank",banktxt)
+                    startActivity(intent)
+                    finish()
+                }
+                else{Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()}
+
+            }, {
+                Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
+                Log.d("nova",it.message.toString())
+
+            }
+
+        )
+        que.add(req1)
+    }
 
 
 }

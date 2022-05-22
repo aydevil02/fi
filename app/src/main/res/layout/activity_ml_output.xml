@@ -33,7 +33,7 @@
                     android:layout_marginStart="10dp"
                     android:background="@drawable/custom_button_2"
                     android:gravity="center"
-                    android:text="Month-Year"
+                    android:text="Year-Month"
                     android:textColor="@color/orange"
                     android:textSize="15dp" />
 
@@ -51,7 +51,7 @@
 
                 <TextView
                     android:id="@+id/cashOutflow"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/custom_button_2"
@@ -62,7 +62,7 @@
 
                 <TextView
                     android:id="@+id/fixed"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/custom_button_2"
@@ -72,7 +72,7 @@
 
                 <TextView
                     android:id="@+id/variable"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/custom_button_2"
@@ -80,33 +80,25 @@
                     android:textColor="@color/orange"
                     android:textSize="15dp" />
 
-                <!--            <TextView-->
-                <!--                android:id="@+id/labelcolumnml"-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="wrap_content"-->
-                <!--                android:layout_marginStart="10dp"-->
-                <!--                android:background="@drawable/custom_button_2"-->
-                <!--                android:text="Labels"-->
-                <!--                android:textColor="@color/orange"-->
-                <!--                android:textSize="15dp" />-->
+
 
                 <TextView
                     android:id="@+id/netcashflow"
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/custom_button_2"
-                    android:text="Month"
+                    android:text="Net Cashflow"
                     android:textColor="@color/orange"
                     android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/review"
-                    android:layout_width="match_parent"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/custom_button_2"
-                    android:text="Type"
+                    android:text="Review"
                     android:textColor="@color/orange"
                     android:textSize="15dp" />
 
@@ -117,7 +109,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_ml_output"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                />
 
 
 
