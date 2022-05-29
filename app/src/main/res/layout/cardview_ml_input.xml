@@ -18,9 +18,9 @@
 
             <TextView
                 android:id="@+id/labelcolumn"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
                 android:background="@drawable/custom_button_2"
                 android:text="Groups"
                 android:gravity="center"
@@ -29,9 +29,9 @@
 
             <TextView
                 android:id="@+id/datecolumn"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
                 android:background="@drawable/custom_button_2"
                 android:gravity="center"
                 android:text="Date"
@@ -40,22 +40,22 @@
 
             <TextView
                 android:id="@+id/descriptioncolumn"
-                android:layout_width="400dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
                 android:background="@drawable/custom_button_2"
                 android:gravity="center"
                 android:text="Description"
-                android:lines="2"
+                android:lines="5"
                 android:textColor="@color/orange"
-                android:textSize="12dp" />
+                android:textSize="8dp" />
 
 
             <TextView
                 android:id="@+id/depositcolumn"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
                 android:background="@drawable/custom_button_2"
                 android:gravity="center"
                 android:text="Deposit"
@@ -64,9 +64,9 @@
 
             <TextView
                 android:id="@+id/withdrawcolumn"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
                 android:background="@drawable/custom_button_2"
                 android:text="Withdraw"
                 android:textColor="@color/orange"
@@ -74,9 +74,9 @@
 
             <TextView
                 android:id="@+id/balancecolumn"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
                 android:background="@drawable/custom_button_2"
                 android:text="Balance"
                 android:textColor="@color/orange"
