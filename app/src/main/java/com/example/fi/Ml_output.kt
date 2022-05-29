@@ -57,6 +57,6 @@ class Ml_output : AppCompatActivity() {
                 Log.d(Tag, e.toString())
             }
         }
-        Log.d(Tag, list[0].toString())
+//        Log.d(Tag, list[0].toString())
     }
 }

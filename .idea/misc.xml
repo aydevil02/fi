@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Production/Intership/fi/app/src/main/res/layout/activity_main2.xml" value="0.18802083333333333" />
         <entry key="..\:/Production/Intership/fi/app/src/main/res/layout/activity_ml_model.xml" value="0.18802083333333333" />
         <entry key="..\:/Production/Intership/fi/app/src/main/res/layout/activity_ml_output.xml" value="0.18802083333333333" />
+        <entry key="..\:/Production/Intership/fi/app/src/main/res/layout/activity_upload_doc.xml" value="0.18802083333333333" />
         <entry key="..\:/Production/Intership/fi/app/src/main/res/layout/cardview_ml_input.xml" value="0.18802083333333333" />
-        <entry key="..\:/Production/Intership/fi/app/src/main/res/layout/cardviewmltable.xml" value="0.18802083333333333" />
+        <entry key="..\:/Production/Intership/fi/app/src/main/res/layout/cardviewmltable.xml" value="0.33" />
+        <entry key="..\:/Production/Intership/fi/app/src/main/res/layout/recyclerforselectedfiles.xml" value="0.33" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable-v24/custom_button_3.xml" value="0.1765" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable-v24/custom_button_4.xml" value="0.1765" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/drawable-v24/custom_button_5.xml" value="0.1765" />
@@ -63,21 +66,13 @@
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/layout/spinnercolor.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/menu/nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhis/AndroidStudioProjects/fi/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1435" />
-        <entry key="..\:/fi/app/src/main/res/drawable/custom_button_2.xml" value="0.194" />
         <entry key="..\:/fi/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
-        <entry key="..\:/fi/app/src/main/res/layout/activity_member_registeration_sucessful.xml" value="0.25416666666666665" />
-        <entry key="..\:/fi/app/src/main/res/layout/activity_ml_model.xml" value="0.2" />
         <entry key="..\:/fi/app/src/main/res/layout/activity_ml_output.xml" value="0.2" />
-        <entry key="..\:/fi/app/src/main/res/layout/activity_upload_doc.xml" value="0.264" />
-        <entry key="..\:/fi/app/src/main/res/layout/activity_upload_pdf.xml" value="0.25416666666666665" />
-        <entry key="..\:/fi/app/src/main/res/layout/activity_user_invite.xml" value="0.25416666666666665" />
-        <entry key="..\:/fi/app/src/main/res/layout/cardview_ml_input.xml" value="0.32786885245901637" />
         <entry key="..\:/fi/app/src/main/res/layout/cardviewmltable.xml" value="0.25416666666666665" />
-        <entry key="..\:/fi/app/src/main/res/layout/recyclerforselectedfiles.xml" value="0.264" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
