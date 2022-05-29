@@ -18,6 +18,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+
+
 public class GetAnalyticsData extends AsyncTask<String, String, String> {
     public After_Request after_request = null;
     private Context context;
@@ -65,8 +67,8 @@ public class GetAnalyticsData extends AsyncTask<String, String, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         if (s != null) {
-            Log.d("TAG", "Data fetched");
-            Log.d("TAG", s);
+//            Log.d("TAG", "Data fetched");
+//            Log.d("TAG", s);
             try {
                 JSONObject Jobject = new JSONObject(s);
                 Jobject = Jobject.getJSONObject("response");

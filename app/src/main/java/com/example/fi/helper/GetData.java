@@ -17,8 +17,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 
 public class GetData  {
     Context context ;
@@ -69,4 +75,49 @@ public class GetData  {
         que.add(request);
         Log.d("nova","Request execu");
     }
+
+
+    public static JSONObject getClusterData(Context context)
+    {
+        Log.d("nova", "Going to send request");
+//        final JSONObject[] Jobj = new JSONObject[1];
+        final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+        String resp = null;
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("fk", "you")
+                .build();
+//                RequestBody body = RequestBody.create(JSON, String.valueOf(new String[]{"json"}));
+        okhttp3.Request request = new okhttp3.Request.Builder()
+                .url(Constant.INSTANCE.getGet_Ml_Data())
+                .addHeader("Authorization", "Token " + Sharedpereference.getAuthCode(context))
+                .post(requestBody)
+                .build();
+        okhttp3.Response response = null;
+        try {
+            response = client.newCall(request).execute();
+            resp = response.body().string();
+
+//            Log.d("nova", String.valueOf(Jobject));
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.d("nova-SendRequest", e.toString());
+        }
+        Log.d("nova", "Almost done");
+
+        JSONObject Jobject = null;
+        try {
+            Jobject = new JSONObject(resp);
+            Jobject = Jobject.getJSONObject("response");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return Jobject;
+    }
+
 }
