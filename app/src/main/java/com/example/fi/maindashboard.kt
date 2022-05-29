@@ -16,48 +16,46 @@ import com.android.volley.toolbox.Volley
 
 
 class maindashboard : AppCompatActivity() {
-    val TAG = "Dashboard_TAG"
+    lateinit var Tag : String
+    lateinit var Url: String
+    lateinit var bank : String
+    private lateinit var Menubtn : Button
+    private lateinit var Bank_name : TextView
+
+
+
+
+//    val TAG = "Dashboard_TAG"
+//    val url = "https://fi-backend.herokuapp.com/api/email/gmail/"
+//    val menubtn =findViewById<Button>(R.id.menubtn)
+//    val bank_name =findViewById<TextView>(R.id.bankname)
+//    val bank = intent.getStringExtra("bank")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maindashboard)
+        init()
 
-        val sharedPreferences: SharedPreferences = this.getSharedPreferences(Constant.AUTH_S_P,
-            Context.MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences(Constant.AUTH_S_P,Context.MODE_PRIVATE)
         val AUTH_TOKEN = sharedPreferences.getString("auth","0")
-        val url = "https://fi-backend.herokuapp.com/api/email/gmail/"
-        val menubtn =findViewById<Button>(R.id.menubtn)
-        val bank_name =findViewById<TextView>(R.id.bankname)
-        val bank = intent.getStringExtra("bank")
 
-        bank_name.setText(bank)
+
+        Bank_name.setText(bank)
 
         Toast.makeText(this,AUTH_TOKEN,Toast.LENGTH_LONG).show()
 
-        val stk: TableLayout = findViewById<View>(R.id.tablelayout) as TableLayout
-
-        val tbrow = TableRow(this)
-        val t1v = TextView(this)
-        t1v.text = "BOX1"
-        t1v.getResources().getColor(R.color.orange)
-        t1v.gravity = Gravity.CENTER
-        t1v.setBackgroundResource(R.drawable.bgtable)
-        tbrow.addView(t1v)
-        stk.addView(tbrow)
-
-
-        menubtn.setOnClickListener {
+        Menubtn.setOnClickListener {
             startActivity(Intent(this,Menu::class.java))
 
         }
 
         val que = Volley.newRequestQueue(this@maindashboard)
         val req = object:JsonObjectRequest(
-            Request.Method.GET,url,null,
+            Request.Method.GET,Url,null,
             {
                     response->
 
-                Log.d(TAG, response.toString())
+                Log.d(Tag, response.toString())
 //                Log.d("nova 2", otp + " " + phone)
 
 //                val status= response.get("status").toString()
@@ -77,7 +75,7 @@ class maindashboard : AppCompatActivity() {
 
             }, {
 //                Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
-                Log.d(TAG,it.message.toString())
+                Log.d(Tag,it.message.toString())
 
             }
         )
@@ -91,5 +89,12 @@ class maindashboard : AppCompatActivity() {
         que.add(req)
 
 
+    }
+    private fun init(){
+        Tag= "Dashboard_TAG"
+        Url= "https://fi-backend.herokuapp.com/api/email/gmail/"
+        Menubtn=findViewById(R.id.menubtn)
+        Bank_name=findViewById(R.id.bankname)
+        bank= intent.getStringExtra("bank").toString()
     }
 }

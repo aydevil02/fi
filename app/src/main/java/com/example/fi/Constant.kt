@@ -15,4 +15,6 @@ object Constant {
     val Get_Ml_Data ="https://yomoh.herokuapp.com/api/analytics/cluster/"
     val PUSH_USER_INPUT ="https://yomoh.herokuapp.com/api/analytics/cluster/update/"
     val Extraction_data ="https://yomoh.herokuapp.com/api/extract/get/statement/"
+    val User_invite_Url ="http://yomoh.herokuapp.com/api/invite/send/"
+
 }

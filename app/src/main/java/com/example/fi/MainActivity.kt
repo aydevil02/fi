@@ -17,20 +17,37 @@ import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity() {
-    val TAG ="MainActivityTag"
+
+    lateinit var verifyButton : Button
+    lateinit var Tag : String
+    private lateinit var Url : String
+    lateinit var Mediacontroller : MediaController
+    private lateinit var Usermobile : EditText
+    private lateinit var VideoView : VideoView
+    private lateinit var Signin : Button
+    private lateinit var Jsonobj : JSONObject
+
+
+//    val TAG ="MainActivityTag"
+//    val url = Constant.Verifyurl
+//    val verifybutton = findViewById<Button>(R.id.loginButton)
+//    val mediaController = MediaController(this)
+//    val usermobile = findViewById<EditText>(R.id.usermobile_no_)
+//    val VideoView = findViewById<VideoView>(R.id.video)
+
+//    val signin = findViewById<Button>(R.id.Login)
+//    val jsonobj = JSONObject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val url = Constant.Verifyurl
-        val VideoView = findViewById<VideoView>(R.id.video)
-        val verifybutton = findViewById<Button>(R.id.loginButton)
-        val mediaController = MediaController(this)
-        val usermobile = findViewById<EditText>(R.id.usermobile_no_)
+        init()
         val vedio = Uri.parse("android.resource://$packageName/raw/${R.raw.video}")
-        val signin = findViewById<Button>(R.id.Login)
-        val jsonobj = JSONObject()
-        mediaController.setAnchorView(VideoView)
+
+
+
+
+        Mediacontroller.setAnchorView(VideoView)
 
 
         val sharedPreferences: SharedPreferences = this.getSharedPreferences(Constant.AUTH_S_P,
@@ -44,18 +61,18 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        usermobile.addTextChangedListener(object :TextWatcher {
+        Usermobile.addTextChangedListener(object :TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
             override fun afterTextChanged(p0: Editable?) {
-                if  (usermobile.text.toString().length !=10){
-                    verifybutton.isEnabled = false
-                    usermobile.setError("Invalid Number")
+                if  (Usermobile.text.toString().length !=10){
+                    verifyButton.isEnabled = false
+                    Usermobile.setError("Invalid Number")
                 }
                 else {
-                    verifybutton.isEnabled = true
+                    verifyButton.isEnabled = true
 
             }
         }
@@ -63,50 +80,19 @@ class MainActivity : AppCompatActivity() {
 
     })
 
-        signin.setOnClickListener {
+        Signin.setOnClickListener {
             startActivity(Intent(this , login_activity::class.java))
         }
 
-        verifybutton.setOnClickListener {
-            val phone =usermobile.text.toString()
-            jsonobj.put("phone",phone)
-            val que = Volley.newRequestQueue(this@MainActivity)
-            val req = JsonObjectRequest(
-                Request.Method.POST,url,jsonobj,
-                {
-                    response->
-
-                    Log.d("nova", response.get("response").toString())
-                    val status= response.get("status").toString()
-                    Toast.makeText(applicationContext,status,Toast.LENGTH_LONG).show()
-                    Log.d("nova",status)
-                    if (status.lowercase() =="success"){
-                        val intent = Intent(this ,RegisterActivity::class.java)
-                        intent.putExtra("usermobile", usermobile.text.toString())
-                        startActivity(intent)
-                        finish()
-                    }
-                    else{
-                        Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()
-                        startActivity(Intent(this ,Notamember::class.java))
-                        finish()
-                    }
-
-                }, {
-                    Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
-                    Log.d("nova",it.message.toString())
-                    startActivity(Intent(this ,statementscreen::class.java))
-                    finish()
-                }
-             )
-            que.add(req)
+        verifyButton.setOnClickListener {
+            SignInUser()
         }
 
 
 
         
 
-        VideoView.setMediaController(mediaController)
+        VideoView.setMediaController(Mediacontroller)
         VideoView.setVideoURI(vedio)
         VideoView.requestFocus()
         VideoView.start()
@@ -117,5 +103,51 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+    private fun init(){
+        verifyButton =findViewById(R.id.loginButton)
+        Tag ="MainActivityTag"
+        Url= Constant.Verifyurl
+        Mediacontroller= MediaController(this)
+        Usermobile = findViewById(R.id.usermobile_no_)
+        VideoView = findViewById(R.id.video)
+        Signin= findViewById(R.id.Login)
+        Jsonobj= JSONObject()
+
+    }
+
+    private fun SignInUser() {
+        val phone =Usermobile.text.toString()
+        Jsonobj.put("phone",phone)
+        val que = Volley.newRequestQueue(this@MainActivity)
+        val req = JsonObjectRequest(
+            Request.Method.POST,Url,Jsonobj,
+            {
+                    response->
+
+                Log.d("nova", response.get("response").toString())
+                val status= response.get("status").toString()
+                Toast.makeText(applicationContext,status,Toast.LENGTH_LONG).show()
+                Log.d("nova",status)
+                if (status.lowercase() =="success"){
+                    val intent = Intent(this ,RegisterActivity::class.java)
+                    intent.putExtra("usermobile", Usermobile.text.toString())
+                    startActivity(intent)
+                    finish()
+                }
+                else{
+                    Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this ,Notamember::class.java))
+                    finish()
+                }
+
+            }, {
+                Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
+                Log.d("nova",it.message.toString())
+                startActivity(Intent(this ,statementscreen::class.java))
+                finish()
+            }
+        )
+        que.add(req)
     }
 }

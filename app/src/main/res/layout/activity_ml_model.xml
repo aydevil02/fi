@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -95,7 +94,7 @@
                                         android:layout_marginStart="10dp"
                                         android:background="@drawable/custombutton"
                                         android:gravity="center"
-                                        android:text="Deposit"
+                                        android:text="Withdrawal"
                                         android:textColor="@color/black"
                                         android:textSize="15dp" />
 
@@ -105,7 +104,7 @@
                                         android:layout_marginStart="10dp"
                                         android:background="@drawable/custombutton"
                                         android:gravity="center"
-                                        android:text="Withdraw"
+                                        android:text="Deposit"
                                         android:textColor="@color/black"
                                         android:textSize="15dp" />
 
@@ -118,27 +117,6 @@
                                         android:text="Balance"
                                         android:textColor="@color/black"
                                         android:textSize="15dp" />
-
-
-                                    <!--                        <TextView-->
-                                    <!--                            android:layout_width="100dp"-->
-                                    <!--                            android:layout_height="wrap_content"-->
-                                    <!--                            android:layout_marginStart="10dp"-->
-                                    <!--                            android:background="@drawable/custombutton"-->
-                                    <!--                            android:text="Month"-->
-                                    <!--                            android:gravity="center"-->
-                                    <!--                            android:textColor="@color/black"-->
-                                    <!--                            android:textSize="15dp" />-->
-
-                                    <!--                        <TextView-->
-                                    <!--                            android:layout_width="100dp"-->
-                                    <!--                            android:layout_height="wrap_content"-->
-                                    <!--                            android:layout_marginStart="10dp"-->
-                                    <!--                            android:background="@drawable/custombutton"-->
-                                    <!--                            android:text="Type"-->
-                                    <!--                            android:gravity="center"-->
-                                    <!--                            android:textColor="@color/black"-->
-                                    <!--                            android:textSize="15dp" />-->
 
                                     <TextView
                                         android:layout_width="100dp"
@@ -185,5 +163,19 @@
         app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
         app:layout_constraintStart_toStartOf="@+id/linearLayout2"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

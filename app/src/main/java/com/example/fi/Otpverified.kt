@@ -8,25 +8,25 @@ import android.os.Looper
 import android.widget.TextView
 
 class Otpverified : AppCompatActivity() {
-    val TAG = "Otpverified_TAG"
+    private lateinit var Tag : String
+    private lateinit var Username : TextView
+
+
+//    val TAG = "Otpverified_TAG"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otpverified)
-
-        val username = findViewById<TextView>(R.id.userfullname)
+        init()
+//        val username = findViewById<TextView>(R.id.userfullname)
         val user = intent.getStringExtra("username")
-
-        username.setText(user)
-
-
+        Username.setText(user)
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this , Message_Activity ::class.java))
-
             finish()
         }, 5000)
-
-
-
-
+    }
+    private fun init(){
+        Tag= "Otpverified_TAG"
+        Username= findViewById(R.id.userfullname)
     }
 }

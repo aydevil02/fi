@@ -1,6 +1,5 @@
 package com.example.fi
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -15,23 +14,26 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
 class User_invite : AppCompatActivity() {
+
+    private lateinit var InvitedName : EditText
+    private lateinit var InvitedPhone : EditText
+    private lateinit var InvitedEmail : EditText
+    private lateinit var InvitedBtn : Button
+    private lateinit var Jsonobj : JSONObject
+
+//    val invitedName = findViewById<EditText>(R.id.inviteName)
+//    val invitedPhone = findViewById<EditText>(R.id.invitePhone)
+//    val invitedEmail = findViewById<EditText>(R.id.inviteEmail)
+//    val invitedBtn = findViewById<Button>(R.id.inviteBtn)
+//    val jsonobj = JSONObject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_invite)
+        init()
 
 
-
-
-        val url = ""
-        val invitedName = findViewById<EditText>(R.id.inviteName)
-        val invitedPhone = findViewById<EditText>(R.id.invitePhone)
-        val invitedEmail = findViewById<EditText>(R.id.inviteEmail)
-        val invitedBtn = findViewById<Button>(R.id.inviteBtn)
-        val jsonobj = JSONObject()
-
-
-
-        invitedName.addTextChangedListener(object : TextWatcher{
+        InvitedName.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
 
@@ -39,46 +41,46 @@ class User_invite : AppCompatActivity() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                if (invitedName.text.toString().length <= 5){
-                        invitedBtn.isEnabled = false
-                            invitedName.setError("Enter Your Name ")
+                if (InvitedName.text.toString().length <= 5){
+                        InvitedBtn.isEnabled = false
+                            InvitedName.setError("Enter Your Name ")
                     }
                     else{
-                        invitedBtn.isEnabled = true
+                        InvitedBtn.isEnabled = true
                     }
             }
 
         })
 
 
-        invitedPhone.addTextChangedListener(object :TextWatcher {
+        InvitedPhone.addTextChangedListener(object :TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
             override fun afterTextChanged(p0: Editable?) {
-                if  (invitedPhone.text.toString().length !=10){
-                    invitedBtn.isEnabled = false
-                    invitedPhone.setError("Invalid Number")
+                if  (InvitedPhone.text.toString().length !=10){
+                    InvitedBtn.isEnabled = false
+                    InvitedPhone.setError("Invalid Number")
                 }
                 else {
-                    invitedBtn.isEnabled = true
+                    InvitedBtn.isEnabled = true
                 }
             }
 
         })
-        invitedEmail.addTextChangedListener(object : TextWatcher {
+        InvitedEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
             override fun afterTextChanged(p0: Editable?) {
-                if  (android.util.Patterns.EMAIL_ADDRESS.matcher(invitedEmail.text.toString()).matches() && invitedEmail.text.toString().isNotEmpty()){
-                    invitedBtn.isEnabled = true
+                if  (android.util.Patterns.EMAIL_ADDRESS.matcher(InvitedEmail.text.toString()).matches() && InvitedEmail.text.toString().isNotEmpty()){
+                    InvitedBtn.isEnabled = true
                 }
                 else {
-                    invitedBtn.isEnabled = false
-                    invitedEmail.setError("Invalid Email")
+                    InvitedBtn.isEnabled = false
+                    InvitedEmail.setError("Invalid Email")
 
                 }
 
@@ -87,36 +89,48 @@ class User_invite : AppCompatActivity() {
         })
 
 
-        invitedBtn.setOnClickListener {
-            val name = invitedName.text.toString()
-            val phone = invitedPhone.text.toString()
-            val email = invitedEmail.text.toString()
+        InvitedBtn.setOnClickListener {
+            InviteFriend()
 
-            jsonobj.put("name", name)
-            jsonobj.put("phone", phone)
-            jsonobj.put("email", email)
-            val que = Volley.newRequestQueue(this@User_invite)
-            val req2 = JsonObjectRequest(
-                Request.Method.POST,url,jsonobj,
-                {
-                        response->
-
-                    Log.d("nova", response.toString())
-                    val status= response.get(Constant.STATUS).toString()
-                    if (status.lowercase() =="success"){
-                        Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()
-                    }
-                    else{
-                        Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()}
-                }, {
-                    Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
-                    Log.d("nova",it.message.toString())
-
-                }
-
-            )
-            que.add(req2)
 
         }
+    }
+    private fun init(){
+        InvitedBtn= findViewById<Button>(R.id.inviteBtn)
+        InvitedEmail= findViewById<EditText>(R.id.inviteEmail)
+        InvitedName= findViewById<EditText>(R.id.inviteName)
+        InvitedPhone= findViewById<EditText>(R.id.invitePhone)
+        Jsonobj =JSONObject()
+    }
+
+    private fun InviteFriend() {
+        val name = InvitedName.text.toString()
+        val phone = InvitedPhone.text.toString()
+        val email = InvitedEmail.text.toString()
+
+        Jsonobj.put("name", name)
+        Jsonobj.put("phone", phone)
+        Jsonobj.put("email", email)
+        val que = Volley.newRequestQueue(this@User_invite)
+        val req2 = JsonObjectRequest(
+            Request.Method.POST,Constant.User_invite_Url,Jsonobj,
+            {
+                    response->
+
+                Log.d("nova", response.toString())
+                val status= response.get(Constant.STATUS).toString()
+                if (status.lowercase() =="success"){
+                    Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(applicationContext, "sucessfull $response", Toast.LENGTH_LONG).show()}
+            }, {
+                Toast.makeText(applicationContext, "error ${it.message}", Toast.LENGTH_LONG).show()
+                Log.d("nova",it.message.toString())
+
+            }
+
+        )
+        que.add(req2)
     }
 }

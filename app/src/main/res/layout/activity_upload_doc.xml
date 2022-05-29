@@ -8,53 +8,136 @@
     android:background="@color/black"
     android:padding="20dp"
     tools:context=".upload_doc">
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="500dp"
+       android:background="@drawable/custom_button_2">
+       <androidx.cardview.widget.CardView
+           android:layout_width="match_parent"
+           android:id="@+id/recyclerforselectedfile"
+           android:layout_height="match_parent"
+           app:cardBackgroundColor="@color/black"
+           >
+
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginEnd="10dp"
+               android:layout_marginBottom="10dp"
+               android:orientation="horizontal"
+               android:padding="5dp">
+
+               <View
+                   android:layout_width="match_parent"
+                   android:layout_height="1dp"
+                   android:background="@color/orange"
+                   app:layout_constraintBottom_toTopOf="@+id/view"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintVertical_bias="0.0"
+                   tools:layout_editor_absoluteX="8dp" />
+
+               <ImageView
+                   android:id="@+id/imageView"
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:background="@drawable/custom_button_2"
+                   android:src="@drawable/pdficon"
+                   android:contentDescription="Pdf Img"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintEnd_toStartOf="@+id/textView"
+                   app:layout_constraintHorizontal_bias="0.074"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <TextView
+                   android:id="@+id/textView"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="12dp"
+                   android:layout_marginEnd="136dp"
+                   android:text="File Name"
+                   android:textColor="@color/orange"
+                   android:textSize="20sp"
+                   app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                   app:layout_constraintHorizontal_bias="1.0"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <TextView
+                   android:id="@+id/textView2"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="File Path"
+                   android:textColor="@color/orange"
+                   android:textSize="15sp"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                   app:layout_constraintHorizontal_bias="0.133"
+                   app:layout_constraintStart_toEndOf="@+id/imageView"
+                   app:layout_constraintTop_toBottomOf="@+id/textView"
+                   app:layout_constraintVertical_bias="0.0" />
+
+               <ImageView
+                   android:id="@+id/imageView2"
+                   android:layout_width="30dp"
+                   android:layout_height="50dp"
+                   android:src="@drawable/deletebutton"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintTop_toTopOf="parent" />
+
+               <View
+                   android:id="@+id/view"
+                   android:layout_width="match_parent"
+                   android:layout_height="1dp"
+                   android:layout_marginTop="4dp"
+                   android:background="@color/orange"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/textView2"
+                   tools:layout_editor_absoluteX="5dp" />
+
+           </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+
+       </androidx.cardview.widget.CardView>
+
+
+   </ScrollView>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:background="@drawable/custom_button_2"
-        android:orientation="vertical">
-        <ImageView
-            android:id="@+id/imageview"
-            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
 
-            android:layout_height="400dp"/>
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/choosebtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/custombutton3"
-            android:text="Choose File"
-            android:gravity="center"
-            android:textColor="@color/orange"
-            android:textSize="20dp"/>
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            android:text="Add Files"
+            android:textColor="@color/black" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Upload  Files"
+            android:textColor="@color/black"
+            android:layout_marginStart="170dp"
+            android:background="@color/orange"/>
+
     </LinearLayout>
 
 
     <Button
-        android:id="@+id/upload"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/custombutton"
-        android:text="upload File"
+        android:padding="5dp"
+        android:text="SKip For Now"
+        android:textColor="@color/orange"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center"
-        android:textColor="@color/black"/>
-    <Button
-        android:id="@+id/skipfornow"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/custombutton3"
-        android:text="Skip For Now"
-        android:layout_gravity="center"
-        android:textColor="@color/Dullorange"/>
-
-
+        android:background="@drawable/custombutton3"/>
 
 </LinearLayout>

@@ -19,52 +19,44 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".Upload_PDF">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="480dp"
             android:background="@drawable/custom_button_2"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/pdfimage"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/selectedfilerecycler"
                 android:layout_width="match_parent"
-
-                android:layout_height="400dp" />
-
-            <Button
-                android:id="@+id/selectfilebtn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/custombutton3"
-                android:gravity="center"
-                android:text="Choose File"
-                android:textColor="@color/orange"
-                android:textSize="20dp" />
+                android:layout_height="wrap_content"/>
 
 
-        </LinearLayout>
+        </ScrollView>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
 
+        <Button
+            android:id="@+id/selectfilebtn"
+            android:layout_width="100dp"
+            android:layout_marginStart="40dp"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            android:text="Add Files"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/uploadfile"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/custombutton"
-            android:text="upload File"
-            android:textColor="@color/black" />
+            android:text="Upload  Files"
+            android:textColor="@color/black"
+            android:layout_marginStart="90dp"
+            android:background="@color/orange"/>
 
-        <Button
-            android:id="@+id/proceednxt"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/custombutton"
-            android:text="proceed Next"
-            android:textColor="@color/black" />
-
+    </LinearLayout>
 
         <Button
             android:id="@+id/skipfornow"
@@ -73,7 +65,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@drawable/custombutton3"
-            android:text="Not now"
+            android:text="Skip For Now"
             android:textColor="@color/Dullorange" />
 
 

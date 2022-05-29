@@ -16,7 +16,7 @@
 
             <TextView
                 android:id="@+id/datecolumnml"
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/custom_button_2"
@@ -39,7 +39,7 @@
 
             <TextView
                 android:id="@+id/cashOutflow"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/custom_button_2"
@@ -50,7 +50,7 @@
 
             <TextView
                 android:id="@+id/fixed"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/custom_button_2"
@@ -60,7 +60,7 @@
 
             <TextView
                 android:id="@+id/variable"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/custom_button_2"
@@ -80,7 +80,7 @@
 
             <TextView
                 android:id="@+id/netcashflow"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/custom_button_2"
@@ -90,7 +90,7 @@
 
             <TextView
                 android:id="@+id/review"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/custom_button_2"
