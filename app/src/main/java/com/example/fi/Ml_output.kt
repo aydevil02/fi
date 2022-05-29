@@ -36,7 +36,7 @@ class Ml_output : AppCompatActivity() {
     }
     private fun init(){
         Tag= "Ml_output_TAG"
-        Recycler_ml_output == findViewById<RecyclerView>(R.id.recycler_ml_output)
+        Recycler_ml_output = findViewById<RecyclerView>(R.id.recycler_ml_output)
 
     }
 

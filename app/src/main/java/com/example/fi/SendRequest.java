@@ -288,46 +288,51 @@ class UploadTask extends AsyncTask<String, String, String>{
 
     @Override
     protected String doInBackground(String... string) {
+        String Jobj = null;
+        for (int i = 0 ; i<string.length;i++) {
 
-        File file1 = new File(string[0]);
-        String Jobj;
+            File file1 = new File(string[i]);
+            Log.d("NOVa ", "UploadingAt"+i);
 
-        try {
-            RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                    .addFormDataPart("statement", file1.getName(), RequestBody.create(MediaType.parse("*/*"), file1))
+
+            try {
+                RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                        .addFormDataPart("statement", file1.getName(), RequestBody.create(MediaType.parse("*/*"), file1))
 //                        .addFormDataPart("files2", file2.getName(), RequestBody.create(MediaType.parse("*/*"), file2))
 //                        .addFormDataPart("files3", file3.getName(), RequestBody.create(MediaType.parse("*/*"), file3))
-                    .addFormDataPart("filename",file1.getName())
+                        .addFormDataPart("filename", file1.getName())
 //                        .addFormDataPart("submit", "submit")
-                    .build();
-            Request request = new Request.Builder()
-                    .url(Constant.INSTANCE.getDocuploadurl())
+                        .build();
+                Request request = new Request.Builder()
+                        .url(Constant.INSTANCE.getDocuploadurl())
 
-                    .addHeader("Authorization","Token "+ Sharedpereference.getAuthCode(context) )
-                    .post(requestBody)
-                    .build();
+                        .addHeader("Authorization", "Token " + Sharedpereference.getAuthCode(context))
+                        .post(requestBody)
+                        .build();
 
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .connectTimeout(15,TimeUnit.SECONDS)
-                    .writeTimeout(15, TimeUnit.SECONDS)
-                    .readTimeout(15, TimeUnit.SECONDS)
-                    .build();
+                OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                        .connectTimeout(15, TimeUnit.SECONDS)
+                        .writeTimeout(15, TimeUnit.SECONDS)
+                        .readTimeout(15, TimeUnit.SECONDS)
+                        .build();
 
-            Response response = okHttpClient.newCall(request).execute();
-            Log.d(TAG,"meeeeeh"+response.message());
-            if (response.isSuccessful()) {
-                Log.d(TAG,response.body().toString());
-                JSONObject Jobject = new JSONObject(response.body().string());
-                Jobj = Jobject.getString("status");
-                return Jobj;
-            } else {
-                return null;
+                Response response = okHttpClient.newCall(request).execute();
+                Log.d(TAG, "meeeeeh" + response.message());
+                if (response.isSuccessful()) {
+                    Log.d(TAG, response.body().toString());
+                    JSONObject Jobject = new JSONObject(response.body().string());
+                    if (Jobject.getString("status").equalsIgnoreCase("success")){
+                        Jobj = "success";
+                    }
+                } else {
+                    return null;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        return null;
+        return Jobj;
     }
 
 }

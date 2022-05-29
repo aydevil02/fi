@@ -23,9 +23,10 @@ class otpverification : AppCompatActivity() {
     private lateinit var Resendotp : Button
     private lateinit var Otp : EditText
     private lateinit var Jsonobj : JSONObject
+    private lateinit var phone : String
 
 //    val TAG = "Otpverification_TAG"
-    val phone = intent.getStringExtra("phone")
+
 //    val loginurl ="https://yomoh.herokuapp.com/api/account/login/"
 //    val otpurl ="https://yomoh.herokuapp.com/api/account/otp/"
 //    val otpverificationbutton =findViewById<Button>(R.id.otpverification)
@@ -37,6 +38,7 @@ class otpverification : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otpverification)
         init()
+        phone = intent.getStringExtra("phone").toString()
             Otpverificationbutton.setOnClickListener {
                 SenOtp()
             }

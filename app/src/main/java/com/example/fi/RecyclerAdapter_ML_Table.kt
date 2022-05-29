@@ -40,28 +40,31 @@ class RecyclerAdapter_ML_Table(val list : ArrayList<JSONObject>,val context : Co
 //        holder.type.text=list[position]["type"].toString()
         var userinput_value : String? = null
 //        var userinput = holder.userinput.selectedItem.toString()
+        Log.d("Cluster"," : ${cluster_group} : ${list[position]["clusterid"].toString()}")
          if( cluster_group !=  list[position]["clusterid"].toString()) {
              cluster_group = list[position]["clusterid"].toString()
-             holder.userinput.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                 override fun onItemSelected(
-                     adapterView: AdapterView<*>?,
-                     view: View?,
-                     pos: Int,
-                     id: Long
-                 ) {
-                     userinput_value = adapterView?.getItemAtPosition(pos).toString()
-                     Log.d("Nova", holder.adapterPosition.toString())
-                    userInputUpdate(holder.labels.text.toString(), userinput_value!!)
-                 }
 
-                 override fun onNothingSelected(p0: AdapterView<*>?) {
 
-                 }
-             }
          }
         else{
-             holder.userinput.visibility = View.INVISIBLE
+             holder.userinput.visibility = View.GONE
          }
+        holder.userinput.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                adapterView: AdapterView<*>?,
+                view: View?,
+                pos: Int,
+                id: Long
+            ) {
+                userinput_value = adapterView?.getItemAtPosition(pos).toString()
+                Log.d("Nova", holder.adapterPosition.toString())
+                userInputUpdate(holder.labels.text.toString(), userinput_value!!)
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+        }
 
 
 
